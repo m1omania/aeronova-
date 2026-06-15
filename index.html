@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Аэронова — разработка, производство и коммерческая эксплуатация летательных аппаратов дирижабельного типа. Партнёрство и применение в странах Персидского залива.">
+  <title>Аэронова — современные дирижабли</title>
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       VARIABLES — sourced from Figma (АЭРОНОВА_лендинг)
+       ========================================================================== */
+    :root {
+      --color-bg: #2d2866;
+      --color-surface: #231c56;
+      --color-white: #ffffff;
+      --color-gold: #f5dd6f;
+      --color-coral: #ff9a6b;
+      --color-text: #ffffff;
+      --color-text-muted: rgba(255, 255, 255, 0.7);
+      --color-text-subtle: rgba(255, 255, 255, 0.4);
+      --color-border: rgba(255, 255, 255, 0.12);
+      --color-border-light: rgba(255, 255, 255, 0.08);
+      --color-overlay: rgba(35, 28, 86, 0.4);
+      --color-overlay-hero: rgba(45, 40, 102, 0.45);
+      --gradient-hero-top: linear-gradient(180deg, rgb(45, 40, 102) 0%, rgba(45, 40, 102, 0) 62.8%);
+      --gradient-hero-bottom: linear-gradient(180deg, rgba(45, 40, 102, 0) 34.25%, rgb(45, 40, 102) 97.05%);
+      --gradient-accent: linear-gradient(180deg, #fff65e 0%, #ff9b6a 100%);
+      --font-sans: "Proxima Nova", "Montserrat", system-ui, -apple-system, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 2.5rem;
+      --space-3xl: 3.25rem;
+      --space-4xl: 5.25rem;
+      --container-max: 90rem;
+      --header-height: 5rem;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 22px;
+      --transition: 0.2s ease;
+    }
+
+    /* ==========================================================================
+       RESET & BASE
+       ========================================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: color var(--transition), opacity var(--transition);
+    }
+
+    a:hover {
+      color: var(--color-white);
+    }
+
+    h1, h2, h3, h4, p {
+      margin: 0;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* ==========================================================================
+       LAYOUT
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding-inline: var(--space-lg);
+    }
+
+    .section {
+      padding-block: var(--space-4xl);
+    }
+
+    .section--alt {
+      background: var(--color-bg);
+    }
+
+    .section--dark {
+      background: var(--color-surface);
+      color: var(--color-white);
+    }
+
+    .section--dark .section__lead,
+    .section--dark .text-muted {
+      color: var(--color-text-muted);
+    }
+
+    .section__header {
+      margin-bottom: var(--space-2xl);
+      max-width: 48rem;
+    }
+
+    .section__header--center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section__eyebrow {
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+
+    .section__lead {
+      font-size: 1.375rem;
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--color-text-muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid--4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .split {
+      display: grid;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .text-muted {
+      color: var(--color-text-muted);
+    }
+
+    .text-small {
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    .section-block-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* ==========================================================================
+       COMPONENTS
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      padding: 0.75rem 1.25rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.2;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: var(--gradient-accent);
+      color: var(--color-bg);
+      border-color: transparent;
+      font-weight: 600;
+    }
+
+    .btn--primary:hover {
+      opacity: 0.9;
+      color: var(--color-bg);
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--color-white);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn--secondary:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-white);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .card {
+      background: var(--color-surface);
+      border: none;
+      border-radius: 0;
+      padding: 2rem;
+    }
+
+    .card__title {
+      font-size: 1.625rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      line-height: 1.3;
+      color: var(--color-white);
+    }
+
+    .card__text {
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+
+    .card__meta {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--color-text-subtle);
+    }
+
+    .badge--neutral {
+      color: var(--color-text-subtle);
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      color: var(--color-text-subtle);
+      font-size: 0.8125rem;
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .placeholder__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    .stat-item {
+      padding: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+    }
+
+    .stat-item__label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-white);
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-item__desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+
+    .diagram {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .diagram__item {
+      padding: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      text-align: center;
+    }
+
+    .diagram__item--wide {
+      grid-column: span 3;
+    }
+
+    .diagram__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto var(--space-sm);
+      background: rgba(245, 221, 111, 0.15);
+      border-radius: var(--radius-sm);
+    }
+
+    .diagram__label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+    }
+
+    .diagram__desc {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+
+    .product-table th,
+    .product-table td {
+      padding: var(--space-md) var(--space-lg);
+      text-align: left;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .product-table th {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+    }
+
+    .product-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .product-table__name {
+      font-weight: 600;
+    }
+
+    .inline-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+    }
+
+    .inline-list__item {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+
+    .inline-list__item::before {
+      content: "—";
+      margin-right: var(--space-xs);
+      color: var(--color-text-subtle);
+    }
+
+    /* ==========================================================================
+       HEADER
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--header-height);
+      background: transparent;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(45, 40, 102, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 100%;
+      gap: var(--space-lg);
+      padding-bottom: 0.625rem;
+    }
+
+    .site-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--color-white);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .site-logo span {
+      color: var(--color-gold);
+    }
+
+    .site-logo:hover {
+      color: var(--color-gold);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xl);
+    }
+
+    .site-nav__list {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .site-nav__link {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--color-white);
+      text-decoration: none;
+      padding: var(--space-xs) 0;
+      transition: color var(--transition);
+    }
+
+    .site-nav__link:hover {
+      color: var(--color-gold);
+    }
+
+    .site-nav__cta {
+      flex-shrink: 0;
+    }
+
+    .site-nav__cta .btn {
+      font-size: 1rem;
+      padding: 0.625rem 1.125rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-xs) var(--space-sm);
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--color-white);
+    }
+
+    /* ==========================================================================
+       SECTIONS
+       ========================================================================== */
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 62.5rem;
+      padding-top: var(--header-height);
+      background: var(--color-bg);
+    }
+
+    .hero__banner {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 62.5rem;
+      overflow: hidden;
+    }
+
+    .hero__banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero__banner-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        var(--gradient-hero-top),
+        var(--gradient-hero-bottom);
+      pointer-events: none;
+    }
+
+    .hero__body {
+      position: relative;
+      z-index: 1;
+      min-height: 62.5rem;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero__display {
+      margin-top: 2.5rem;
+      margin-bottom: auto;
+      line-height: 1;
+    }
+
+    .hero__display-line {
+      display: block;
+      font-size: clamp(3rem, 10vw, 9.375rem);
+      text-transform: uppercase;
+      color: var(--color-white);
+    }
+
+    .hero__display-line--light {
+      font-weight: 300;
+    }
+
+    .hero__display-line--bold {
+      font-weight: 700;
+      text-align: right;
+      text-shadow: 0 4px 16px rgba(45, 40, 102, 0.2);
+    }
+
+    .hero__intro {
+      align-self: flex-end;
+      max-width: 42.5rem;
+      margin-top: 2rem;
+      font-size: clamp(1.125rem, 2vw, 1.625rem);
+      line-height: 1.3;
+      text-align: right;
+      color: var(--color-white);
+    }
+
+    .hero__lower {
+      margin-top: 3rem;
+      padding-top: 2rem;
+    }
+
+    .hero__actions {
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* Why Now */
+    .why-now__grid .card {
+      border-left: 3px solid var(--color-gold);
+    }
+
+    /* Use Cases */
+    .use-case-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .use-case-card .placeholder {
+      aspect-ratio: 16 / 9;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* About */
+    .about__content {
+      max-width: 40rem;
+    }
+
+    .mission-banner {
+      position: relative;
+      margin-inline: calc(-50vw + 50%);
+      width: 100vw;
+      min-height: 37.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6.875rem;
+      padding: 3.125rem var(--space-lg);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .mission-banner__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .mission-banner__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mission-banner__overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-overlay-hero);
+    }
+
+    .mission-banner__title,
+    .mission-banner__text {
+      position: relative;
+      z-index: 1;
+      color: var(--color-white);
+      text-transform: uppercase;
+    }
+
+    .mission-banner__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .mission-banner__text {
+      max-width: 56rem;
+      font-size: clamp(1.25rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .about__mission {
+      margin-top: var(--space-xl);
+      padding: var(--space-xl);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-gold);
+    }
+
+    .about__mission-text {
+      font-size: 1.375rem;
+      font-weight: 300;
+      color: var(--color-white);
+      line-height: 1.3;
+    }
+
+    /* GCC */
+    .gcc-item {
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-start;
+    }
+
+    .gcc-item__marker {
+      flex-shrink: 0;
+      width: 4px;
+      height: 100%;
+      min-height: 3rem;
+      background: var(--color-gold);
+      border-radius: 2px;
+    }
+
+    /* Products */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card__image {
+      width: 100%;
+      aspect-ratio: 400 / 296;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .product-card__status {
+      font-size: 1.125rem;
+      color: var(--color-text-subtle);
+    }
+
+    .product-table-wrap {
+      display: none;
+    }
+
+    /* Schematics */
+    .schematic-block {
+      margin-top: var(--space-4xl);
+    }
+
+    .schematic-block__visual {
+      width: 100%;
+      margin-top: var(--space-2xl);
+    }
+
+    .schematic-block__visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .link-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: var(--space-lg);
+      font-size: 1.125rem;
+      color: var(--color-white);
+      text-decoration: none;
+    }
+
+    .link-more:hover {
+      color: var(--color-gold);
+    }
+
+    .link-more--accent {
+      color: var(--color-gold);
+    }
+
+  /* Partnership */
+    .partnership-card .card__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+    }
+
+    .final-cta__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+      max-width: 36rem;
+      margin-inline: auto;
+    }
+
+    .final-cta__lead {
+      font-size: 1.375rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 36rem;
+      margin-inline: auto;
+      margin-bottom: var(--space-xl);
+    }
+
+    .final-cta__actions {
+      justify-content: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .contact-block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      max-width: 48rem;
+      margin-inline: auto;
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .contact-block__item {
+      text-align: center;
+    }
+
+    .contact-block__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+      margin-bottom: var(--space-xs);
+    }
+
+    .contact-block__value {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding-block: 4rem 3.125rem;
+      background: var(--color-bg);
+      border-top: 8px solid var(--color-coral);
+    }
+
+    .site-footer__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2xl);
+      margin-bottom: 2.125rem;
+    }
+
+    .site-footer__brand {
+      max-width: 21rem;
+    }
+
+    .site-footer__logo {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--color-white);
+      margin-bottom: 2.75rem;
+      display: block;
+      text-decoration: none;
+    }
+
+    .site-footer__address {
+      font-size: 1.125rem;
+      line-height: 1.3;
+      color: var(--color-white);
+    }
+
+    .site-footer__col {
+      min-width: 12rem;
+    }
+
+    .site-footer__col-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-white);
+      margin-bottom: 1rem;
+    }
+
+    .site-footer__col-link {
+      display: block;
+      font-size: 1.125rem;
+      color: var(--color-gold);
+      text-decoration: none;
+      margin-bottom: 1rem;
+    }
+
+    .site-footer__col-link--muted {
+      color: var(--color-white);
+    }
+
+    .site-footer__col-text {
+      font-size: 1.125rem;
+      color: var(--color-white);
+    }
+
+    .scroll-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-lg);
+      background: var(--gradient-accent);
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: var(--color-bg);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .site-footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .site-footer__social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .site-footer__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      color: var(--color-white);
+      font-size: 0.75rem;
+      text-decoration: none;
+    }
+
+    .site-footer__legal {
+      text-align: right;
+      font-size: 1rem;
+      color: var(--color-text-subtle);
+    }
+
+    .site-footer__legal a {
+      color: var(--color-text-subtle);
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
+    @media (min-width: 64rem) {
+      .split {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 63.99rem) {
+      .grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .diagram {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .diagram__item--wide {
+        grid-column: span 2;
+      }
+
+      .contact-block {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 47.99rem) {
+      .section {
+        padding-block: var(--space-3xl);
+      }
+
+      .grid--2,
+      .grid--3,
+      .grid--4 {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-list {
+        grid-template-columns: 1fr;
+      }
+
+      .diagram {
+        grid-template-columns: 1fr;
+      }
+
+      .diagram__item--wide {
+        grid-column: span 1;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero__banner,
+      .hero__body {
+        min-height: 36rem;
+      }
+
+      .hero__display-line--bold {
+        text-align: left;
+      }
+
+      .hero__intro {
+        text-align: left;
+        align-self: stretch;
+      }
+
+      .site-footer__top {
+        flex-direction: column;
+      }
+
+      .site-nav__list {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border-light);
+        padding: var(--space-lg);
+        gap: var(--space-sm);
+      }
+
+      .site-nav__list.is-open {
+        display: flex;
+      }
+
+      .site-nav {
+        position: relative;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .site-nav__cta .btn {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8125rem;
+      }
+
+      .product-table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .hero__visual .placeholder {
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  PROJECT: Aeronova Exhibition Landing Page — Dubai / GCC
+  PURPOSE: B2B one-page presentation for trade show audience
+  AUDIENCE: Strategic partners, B2B customers, dealers, investors, tourism/logistics/infrastructure sectors
+
+  PAGE SECTIONS:
+  1. Hero
+  2. Why Now
+  3. Why Airships
+  4. How It Works
+  5. Use Cases
+  6. About Aeronova
+  7. Product Lineup
+  8. GCC / Dubai Opportunities
+  9. Partnership Models
+  10. Final CTA
+-->
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="#hero" class="site-logo"><span>A</span>ERONOVA</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+        Меню
+      </button>
+      <ul class="site-nav__list" id="nav-menu">
+        <li><a href="#why-now" class="site-nav__link">Почему сейчас</a></li>
+        <li><a href="#why-airships" class="site-nav__link">Технология</a></li>
+        <li><a href="#use-cases" class="site-nav__link">Применение</a></li>
+        <li><a href="#about" class="site-nav__link">О компании</a></li>
+        <li><a href="#products" class="site-nav__link">Проекты</a></li>
+        <li><a href="#gcc" class="site-nav__link">Персидский залив</a></li>
+        <li><a href="#partnership" class="site-nav__link">Партнёрство</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <a href="#contact" class="btn btn--primary">Запросить встречу</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. HERO -->
+  <section id="hero" class="hero">
+    <div class="hero__banner" aria-hidden="true">
+      <img class="hero__banner-image" src="assets/hero.jpg" alt="">
+      <div class="hero__banner-gradient"></div>
+    </div>
+    <div class="container hero__body">
+      <h1 class="hero__display">
+        <span class="hero__display-line hero__display-line--light">Мы строим</span>
+        <span class="hero__display-line hero__display-line--bold">дирижабли</span>
+      </h1>
+      <p class="hero__intro">
+        Мы молодая российская компания, взявшаяся за разработку, производство и коммерческую эксплуатацию летательных аппаратов дирижабельного типа.
+      </p>
+      <div class="hero__lower">
+        <div class="hero__actions btn-group">
+          <a href="#contact" class="btn btn--primary">Запросить встречу</a>
+          <a href="#partnership" class="btn btn--secondary">Стать партнёром</a>
+        </div>
+        <div class="stat-list" role="list" aria-label="Компетенции компании">
+          <div class="stat-item" role="listitem">
+            <p class="stat-item__label">Разработка</p>
+            <p class="stat-item__desc">Проектирование и инженерия дирижабельной техники</p>
+          </div>
+          <div class="stat-item" role="listitem">
+            <p class="stat-item__label">Производство</p>
+            <p class="stat-item__desc">Изготовление воздухоплавательных систем</p>
+          </div>
+          <div class="stat-item" role="listitem">
+            <p class="stat-item__label">Коммерческая эксплуатация</p>
+            <p class="stat-item__desc">Внедрение и операционный опыт</p>
+          </div>
+          <div class="stat-item" role="listitem">
+            <p class="stat-item__label">Дирижабельные системы</p>
+            <p class="stat-item__desc">Разработка интегрированных платформ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. WHY NOW -->
+  <section id="why-now" class="section section--alt">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section-block-title">Почему сейчас</h2>
+        <p class="section__lead">
+          В туризме, логистике, инфраструктуре и специальных миссиях операторы вновь оценивают платформы с длительным временем на станции, заметным присутствием и гибкостью задач — без необходимости полноценной аэродромной инфраструктуры в каждой точке применения.
+        </p>
+      </header>
+      <div class="grid grid--2 why-now__grid">
+        <article class="card">
+          <h3 class="card__title">Туризм и впечатления</h3>
+          <p class="card__text">Медленный полёт на малой высоте подходит для экскурсионных и премиальных маршрутов, где само путешествие — часть продукта.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Логистика в удалённых районах</h3>
+          <p class="card__text">Там, где ограничен доступ по дорогам и ВПП, воздухоплавательные платформы могут дополнять транспортную систему на выбранных грузовых направлениях.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Мониторинг инфраструктуры</h3>
+          <p class="card__text">Длительное присутствие в воздухе поддерживает инспекцию трубопроводов, коридоров и объектов с устойчивой точки обзора и меньшим числом перебазирований.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Специальные миссии</h3>
+          <p class="card__text">Ретрансляция связи, наблюдение и стратосферные задачи выигрывают от платформ, рассчитанных на выносливость и контролируемую эксплуатацию.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY AIRSHIPS -->
+  <section id="why-airships" class="section">
+    <div class="container">
+      <header class="section__header section__header--center">
+        <h2 class="section-block-title">Почему дирижабли</h2>
+        <p class="section__lead">
+          Не замена всей авиации — дифференцированная платформа там, где важны выносливость, обзорность и меньшая зависимость от инфраструктуры.
+        </p>
+      </header>
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 class="card__title">Ориентированный на безопасность профиль полёта</h3>
+          <p class="card__text">Меньшие скорости и аэростатическая подъёмная сила поддерживают контролируемые операции для наблюдения и близких миссий.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Выносливость</h3>
+          <p class="card__text">Длительное время на станции сокращает циклы перебазирования при мониторинге, ретрансляции и постоянном наблюдении.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Меньшая зависимость от инфраструктуры</h3>
+          <p class="card__text">Эксплуатацию можно выстроить с меньшей привязкой к стационарным ВПП по сравнению с классической авиацией.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Воздушная заметность</h3>
+          <p class="card__text">Крупный обтекатель и устойчивые траектории обеспечивают прямую видимость для наблюдения, событий и брендинга.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Эффективность для выбранных задач</h3>
+          <p class="card__text">Для определённых маршрутов и полезной нагрузки воздухоплавательные системы могут давать операционные преимущества.</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Комфорт и наблюдение</h3>
+          <p class="card__text">Медленный полёт с низкой вибрацией подходит для пассажирского комфорта и длительного визуального наблюдения.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW IT WORKS -->
+  <section id="how-it-works" class="section section--alt">
+    <div class="container">
+      <div class="split">
+        <div>
+          <header class="section__header">
+            <h2 class="section-block-title">Как это устроено</h2>
+            <p class="section__lead">
+              Интегрированная воздухоплавательная система объединяет аэростатическую подъёмную силу, движение, управление и полезную нагрузку в платформу под конкретную миссию — с дистанционным или экипажным управлением.
+            </p>
+          </header>
+          <p class="text-muted text-small">
+            Каждая подсистема проектируется под класс дирижабля, эксплуатационный диапазон и нормативные требования целевой миссии.
+          </p>
+        </div>
+        <div>
+          <div class="diagram" aria-label="Схема архитектуры дирижабля">
+            <div class="diagram__item diagram__item--wide">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Оболочка</p>
+              <p class="diagram__desc">Газонепроницаемая конструкция, задающая аэродинамическую форму и объём подъёма</p>
+            </div>
+            <div class="diagram__item">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Подъёмный газ</p>
+              <p class="diagram__desc">Аэростатическая среда внутри оболочки</p>
+            </div>
+            <div class="diagram__item">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Движители</p>
+              <p class="diagram__desc">Системы тяги для маневрирования и перелёта</p>
+            </div>
+            <div class="diagram__item">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Системы управления</p>
+              <p class="diagram__desc">Управление полётом, навигация и устойчивость</p>
+            </div>
+            <div class="diagram__item">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Полезная нагрузка</p>
+              <p class="diagram__desc">Пассажиры, груз, сенсоры или миссионное оборудование</p>
+            </div>
+            <div class="diagram__item">
+              <div class="diagram__icon" aria-hidden="true"></div>
+              <p class="diagram__label">Эксплуатация</p>
+              <p class="diagram__desc">Дистанционное или бортовое управление миссией</p>
+            </div>
+          </div>
+          <div class="schematic-block">
+            <h3 class="section-block-title" style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: var(--space-2xl);">Аэродром</h3>
+            <div class="schematic-block__visual">
+              <img src="assets/airfield.png" alt="Схема аэродрома">
+            </div>
+            <a href="#contact" class="link-more">Подробнее <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="schematic-block">
+            <h3 class="section-block-title" style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: var(--space-2xl);">Производство</h3>
+            <div class="schematic-block__visual">
+              <img src="assets/production.png" alt="Схема производственного комплекса">
+            </div>
+            <a href="#contact" class="link-more link-more--accent">Подробнее <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. USE CASES -->
+  <section id="use-cases" class="section">
+    <div class="container">
+      <header class="section__header section__header--center">
+        <h2 class="section-block-title">Сценарии применения</h2>
+        <p class="section__lead">
+          Дирижабельные платформы закрывают определённый набор коммерческих и операционных задач, где характеристики платформы совпадают с требованиями миссии.
+        </p>
+      </header>
+      <div class="grid grid--3">
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — туризм">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Туризм и экскурсии</h3>
+          <p class="card__text">Премиальные полёты и живописные маршруты над достопримечательностями и природными ландшафтами.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — грузовая логистика">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Грузоперевозки и удалённый доступ</h3>
+          <p class="card__text">Точечная доставка и снабжение там, где классическая инфраструктура ограничена.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — мониторинг инфраструктуры">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Мониторинг инфраструктуры и трубопроводов</h3>
+          <p class="card__text">Длительная воздушная инспекция коридоров, объектов и критической инфраструктуры.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — реклама и события">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Реклама и события</h3>
+          <p class="card__text">Заметное воздушное присутствие для брендинга, фестивалей и крупных мероприятий.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — связь">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Платформа связи</h3>
+          <p class="card__text">Временная или полупостоянная ретрансляция и поддержка связи в заданной зоне покрытия.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — пассажирская мобильность">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Пассажирская мобильность</h3>
+          <p class="card__text">Региональные и точечные пассажирские перевозки на выбранных маршрутах.</p>
+        </article>
+        <article class="card use-case-card">
+          <div class="placeholder" role="img" aria-label="Визуал — стратосферные миссии">
+            <span class="placeholder__label">[ Визуал ]</span>
+          </div>
+          <h3 class="card__title">Стратосферные и специальные миссии</h3>
+          <p class="card__text">Контролируемые высотные операции для наблюдения, исследований и специализированных полезных нагрузок.</p>
+        </article>
+      </div>
+      <div class="btn-group" style="justify-content: center; margin-top: var(--space-2xl);">
+        <a href="#contact" class="btn btn--primary">Обсудить ваш сценарий</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ABOUT AERONOVA -->
+  <section id="about" class="section section--alt">
+    <div class="container">
+      <div class="about__content">
+        <h2 class="section-block-title">О компании</h2>
+        <p class="text-muted" style="margin-bottom: var(--space-md);">
+          «Аэронова» — молодая российская компания, взявшаяся за разработку, производство и коммерческую эксплуатацию летательных аппаратов дирижабельного типа.
+        </p>
+        <p class="text-muted" style="margin-bottom: var(--space-md);">
+          Компания создаёт интегрированные воздухоплавательные платформы — от проектирования и производства до операционного внедрения — с фокусом на практические коммерческие применения.
+        </p>
+        <p class="text-muted">
+          «Аэронова» позиционирует себя как инженерную организацию, работающую над несколькими дирижабельными программами и связанными аэростатическими системами с активной разработкой по всему портфелю проектов.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-banner" aria-labelledby="mission-title">
+    <div class="mission-banner__bg" aria-hidden="true">
+      <img src="assets/mission.jpg" alt="">
+      <div class="mission-banner__overlay"></div>
+    </div>
+    <h2 class="mission-banner__title" id="mission-title">Наша миссия</h2>
+    <p class="mission-banner__text">Интегрировать воздухоплавательную технику в современную экономику, расширяя представление о транспорте</p>
+  </section>
+
+  <!-- 7. PRODUCT LINEUP -->
+  <section id="products" class="section">
+    <div class="container">
+      <h2 class="section-block-title">Проекты</h2>
+      <p class="section__lead" style="margin-bottom: var(--space-2xl); max-width: 40rem;">
+        Активные программы на разных стадиях разработки дирижаблей и стратосферных аэростатов. Статусы соответствуют текущим данным компании.
+      </p>
+
+      <div class="product-grid">
+        <article class="card product-card">
+          <h3 class="card__title">NOVA-01</h3>
+          <img class="product-card__image" src="assets/nova-01.png" alt="Схема дирижабля NOVA-01">
+          <p class="product-card__status">Испытания</p>
+        </article>
+        <article class="card product-card">
+          <h3 class="card__title">NOVA-2</h3>
+          <img class="product-card__image" src="assets/nova-2.png" alt="Схема дирижабля NOVA-2">
+          <p class="product-card__status">Разработка</p>
+        </article>
+        <article class="card product-card">
+          <h3 class="card__title">NOVA-8</h3>
+          <img class="product-card__image" src="assets/nova-8.png" alt="Схема дирижабля NOVA-8">
+          <p class="product-card__status">Проектирование</p>
+        </article>
+      </div>
+
+      <article class="card" style="margin-top: 1.5rem;">
+        <h3 class="card__title">Управляемые стратосферные аэростаты</h3>
+        <p class="card__text">Высотные аэростатические системы на стадии испытаний.</p>
+        <p class="product-card__status" style="margin-top: 1rem;">Испытания</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 8. GCC / DUBAI -->
+  <section id="gcc" class="section section--alt">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section-block-title">Персидский залив и Дубай</h2>
+        <p class="section__lead">
+          В регионе Персидского залива есть понятные коммерческие точки входа, где характеристики дирижабельных платформ совпадают со структурой рынка — туризм, логистика, инфраструктура и события.
+        </p>
+      </header>
+      <div class="grid grid--2">
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Премиальный туризм</h3>
+            <p class="card__text">Воздушные экскурсии и впечатляющие маршруты над городскими достопримечательностями, побережьями и пустынными ландшафтами — в русле инвестиций региона в гостеприимство и туризм.</p>
+          </div>
+        </article>
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Пустынная логистика</h3>
+            <p class="card__text">Дополнительный транспорт для удалённых площадок, энергообъектов и маршрутов снабжения там, где наземная инфраструктура разрежена или сезонна.</p>
+          </div>
+        </article>
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Инспекция инфраструктуры</h3>
+            <p class="card__text">Воздушный мониторинг трубопроводов, промышленных коридоров, портов и крупных строительных проектов по всему региону.</p>
+          </div>
+        </article>
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Событийная активация</h3>
+            <p class="card__text">Заметное воздушное присутствие на международных событиях, выставках и брендовых кампаниях — устоявшийся сценарий в региональной событийной экономике.</p>
+          </div>
+        </article>
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Временная связь и наблюдение</h3>
+            <p class="card__text">Воздушные ретрансляторы и платформы наблюдения для заданных зон покрытия — поддержка связи и ситуационной осведомлённости.</p>
+          </div>
+        </article>
+        <article class="card gcc-item">
+          <div class="gcc-item__marker" aria-hidden="true"></div>
+          <div>
+            <h3 class="card__title">Региональный партнёрский хаб</h3>
+            <p class="card__text">Дубай как точка входа для делового взаимодействия, дилерского представительства и стратегических партнёрств на рынке стран Персидского залива.</p>
+          </div>
+        </article>
+      </div>
+      <div class="btn-group" style="margin-top: var(--space-2xl);">
+        <a href="#partnership" class="btn btn--secondary">Обсудить региональное партнёрство</a>
+        <a href="#contact" class="btn btn--primary">Назначить встречу в Дубае</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PARTNERSHIP MODELS -->
+  <section id="partnership" class="section">
+    <div class="container">
+      <header class="section__header section__header--center">
+        <h2 class="section-block-title">Партнёрство</h2>
+        <p class="section__lead">
+          Структурированные форматы взаимодействия для заказчиков, региональных представителей, стратегических партнёров и инвесторов.
+        </p>
+      </header>
+      <div class="grid grid--2">
+        <article class="card partnership-card">
+          <h3 class="card__title">Заказчик</h3>
+          <p class="card__text">Для организаций, которым нужны дирижабельные платформы или миссионные внедрения. Прямое обсуждение требований, конфигурации и операционного планирования.</p>
+        </article>
+        <article class="card partnership-card">
+          <h3 class="card__title">Региональный представитель / дилер</h3>
+          <p class="card__text">Для квалифицированных партнёров, представляющих «Аэронову» на определённых территориях. Развитие рынка, привлечение клиентов и локальная операционная поддержка.</p>
+        </article>
+        <article class="card partnership-card">
+          <h3 class="card__title">Стратегический партнёр</h3>
+          <p class="card__text">Для компаний с дополняющими технологиями, инфраструктурой или доступом к рынку. Совместная разработка, совместное внедрение и проектирование интегрированных решений.</p>
+        </article>
+        <article class="card partnership-card">
+          <h3 class="card__title">Инвестор</h3>
+          <p class="card__text">Для инвесторов, интересующихся разработкой воздухоплавательной техники. Доступ к материалам компании, обзору программ и структурированному диалогу.</p>
+        </article>
+      </div>
+      <ul class="inline-list" style="margin-top: var(--space-xl); justify-content: center;">
+        <li class="inline-list__item">Запросить встречу</li>
+        <li class="inline-list__item">Стать партнёром</li>
+        <li class="inline-list__item">Обсудить представительство / дилерство</li>
+        <li class="inline-list__item">Запросить материалы для инвесторов</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10. FINAL CTA -->
+  <section id="contact" class="section section--dark">
+    <div class="container final-cta">
+      <h2 class="final-cta__title">Обсудим, как воздухоплавательные платформы соответствуют вашим задачам</h2>
+      <p class="final-cta__lead">
+        Оцениваете ли вы миссионное применение, региональное представительство или инвестиционные возможности — мы открыты к структурированному диалогу.
+      </p>
+      <div class="btn-group final-cta__actions">
+        <a href="mailto:official@aeronova.team" class="btn btn--primary">Назначить встречу</a>
+        <a href="mailto:official@aeronova.team" class="btn btn--ghost">Запросить материалы</a>
+      </div>
+      <div class="contact-block">
+        <div class="contact-block__item">
+          <p class="contact-block__label">Email</p>
+          <p class="contact-block__value">official@aeronova.team</p>
+        </div>
+        <div class="contact-block__item">
+          <p class="contact-block__label">Сайт</p>
+          <p class="contact-block__value">aeronova.com</p>
+        </div>
+        <div class="contact-block__item">
+          <p class="contact-block__label">Telegram</p>
+          <p class="contact-block__value">@aeronova</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="#hero" class="site-footer__logo"><span style="color: var(--color-gold);">A</span>ERONOVA</a>
+        <p class="site-footer__address">121121, Москва, БЦ «Хайт Тек Хаус»<br>ул. Большая Академическая, д. 5А</p>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">О дирижаблях</p>
+        <a href="#why-airships" class="site-footer__col-link site-footer__col-link--muted">Технология</a>
+        <a href="#use-cases" class="site-footer__col-link">Применение</a>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">Проекты</p>
+        <a href="#products" class="site-footer__col-link site-footer__col-link--muted">Портфель</a>
+        <a href="#contact" class="site-footer__col-link site-footer__col-link--muted">Контакты</a>
+        <p class="site-footer__col-text">+7 (495) 775-60-53</p>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-text" style="margin-top: 2.75rem;">official@aeronova.team</p>
+      </div>
+      <a href="#hero" class="scroll-top" aria-label="Наверх">↑</a>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__social">
+        <a href="#" class="site-footer__social-link" aria-label="Telegram">TG</a>
+        <a href="#" class="site-footer__social-link" aria-label="ВКонтакте">VK</a>
+      </div>
+      <div class="site-footer__legal">
+        <a href="#">Политика конфиденциальности</a>
+        <p style="margin: 0.5rem 0 0;">&copy; 2025, ООО «Аэронова». Все права защищены.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    var header = document.querySelector('.site-header');
+
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    if (header) {
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('is-scrolled', window.scrollY > 80);
+      }, { passive: true });
+    }
+  })();
+</script>
+
+</body>
+</html>
