@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="plane" clip-path="url(#clip0_0_6)">
+<path id="Vector" d="M10 7.33353L11.125 12.8002C11.1875 13.1335 11.0625 13.4002 10.8125 13.6002L10.5 13.7335C10.1875 13.8669 9.875 13.8002 9.6875 13.5335L7.5 10.0002L5.625 11.3335V13.3335L5 14.0002L3.75 12.0002L1.875 10.6669L2.5 10.0002H4.375L5.625 8.0002L2.3125 5.66687C2.0625 5.46687 2 5.13353 2.125 4.8002L2.3125 4.46687C2.4375 4.2002 2.6875 4.06687 3 4.13353L8.125 5.33353L10.3125 3.0002C11.25 2.0002 12.5 1.66687 13.125 2.0002C13.4375 2.66687 13.125 4.0002 12.1875 5.0002L10 7.33353Z" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_6">
+<rect width="15" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -3,1598 +3,1944 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Аэронова — разработка, производство и коммерческая эксплуатация летательных аппаратов дирижабельного типа. Партнёрство и применение в странах Персидского залива.">
-  <title>Аэронова — современные дирижабли</title>
-  <link rel="preconnect" href="https://fonts.cdnfonts.com">
-  <link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet">
+  <meta name="description" content="Аэронова — разработка, производство и коммерческая эксплуатация дирижаблей нового поколения.">
+  <title>Аэронова — дирижабли нового поколения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  </script>
   <style>
-    /* ==========================================================================
-       VARIABLES — sourced from Figma (АЭРОНОВА_лендинг)
-       ========================================================================== */
     :root {
-      --color-bg: #2d2866;
-      --color-surface: #231c56;
-      --color-white: #ffffff;
-      --color-gold: #f5dd6f;
-      --color-coral: #ff9a6b;
-      --color-text: #ffffff;
-      --color-text-muted: rgba(255, 255, 255, 0.7);
-      --color-text-subtle: rgba(255, 255, 255, 0.4);
-      --color-border: rgba(255, 255, 255, 0.12);
-      --color-border-light: rgba(255, 255, 255, 0.08);
-      --color-overlay: rgba(35, 28, 86, 0.4);
-      --color-overlay-hero: rgba(45, 40, 102, 0.45);
-      --gradient-hero-top: linear-gradient(180deg, rgb(45, 40, 102) 0%, rgba(45, 40, 102, 0) 62.8%);
-      --gradient-hero-bottom: linear-gradient(180deg, rgba(45, 40, 102, 0) 34.25%, rgb(45, 40, 102) 97.05%);
-      --gradient-accent: linear-gradient(180deg, #fff65e 0%, #ff9b6a 100%);
-      --font-sans: "Proxima Nova", "Montserrat", system-ui, -apple-system, sans-serif;
-      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      --space-xs: 0.5rem;
-      --space-sm: 0.75rem;
-      --space-md: 1rem;
-      --space-lg: 1.5rem;
-      --space-xl: 2rem;
-      --space-2xl: 2.5rem;
-      --space-3xl: 3.25rem;
-      --space-4xl: 5.25rem;
-      --container-max: 90rem;
-      --header-height: 5rem;
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 22px;
+      --black: #000000;
+      --navy-deep: #0f1535;
+      --navy-overlay: 20, 28, 72;
+      --white: #ffffff;
+      --text: #000000;
+      --muted: rgba(0, 0, 0, 0.4);
+      --muted-light: rgba(0, 0, 0, 0.3);
+      --surface: #f8f9f9;
+      --surface-top: #f5fbff;
+      --carousel-bg: #637567;
+      --container: 80rem;
+      --pad: clamp(1.25rem, 4vw, 5rem);
+      --content-inset: max(var(--pad), calc((100vw - var(--container)) / 2 + var(--pad)));
+      --font-sans: "Geist Sans", system-ui, sans-serif;
+      --font-display: "Unbounded", system-ui, sans-serif;
+      --section-heading-size: clamp(1.75rem, 3vw, 2.875rem);
+      --section-heading-weight: 700;
+      --section-heading-leading: 1.1;
+      --section-heading-tracking: -0.02em;
       --transition: 0.2s ease;
     }
 
-    /* ==========================================================================
-       RESET & BASE
-       ========================================================================== */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-height);
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
     body {
       margin: 0;
       font-family: var(--font-sans);
-      font-size: 1.125rem;
-      font-weight: 400;
-      line-height: 1.3;
-      color: var(--color-text);
-      background: var(--color-bg);
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--text);
+      background: var(--navy-deep);
       -webkit-font-smoothing: antialiased;
     }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      color: var(--color-gold);
-      text-decoration: none;
-      transition: color var(--transition), opacity var(--transition);
-    }
-
-    a:hover {
-      color: var(--color-white);
-    }
-
-    h1, h2, h3, h4, p {
-      margin: 0;
-    }
-
-    ul, ol {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    /* ==========================================================================
-       LAYOUT
-       ========================================================================== */
-    .container {
+    .container,
+    .why-section__grid,
+    .stats-section__header,
+    .stats-section__grid,
+    .split-cards__grid,
+    .contact-cta__grid,
+    .site-header__bar,
+    .site-footer__shell {
       width: 100%;
-      max-width: var(--container-max);
+      max-width: var(--container);
       margin-inline: auto;
-      padding-inline: var(--space-lg);
+      padding-inline: var(--pad);
     }
 
-    .section {
-      padding-block: var(--space-4xl);
+    .section-light {
+      background: transparent;
     }
 
-    .section--alt {
-      background: var(--color-bg);
+    .page-scroll {
+      position: relative;
+      z-index: 10;
+      background: transparent;
+      color: var(--white);
     }
 
-    .section--dark {
-      background: var(--color-surface);
-      color: var(--color-white);
+    .page-scroll .btn {
+      border-color: var(--white);
+      color: var(--white);
     }
 
-    .section--dark .section__lead,
-    .section--dark .text-muted {
-      color: var(--color-text-muted);
+    .page-scroll .btn--ghost {
+      border-color: rgba(255, 255, 255, 0.35);
     }
 
-    .section__header {
-      margin-bottom: var(--space-2xl);
-      max-width: 48rem;
+    .page-scroll .btn:hover {
+      background: var(--white);
+      color: var(--black);
     }
 
-    .section__header--center {
-      margin-inline: auto;
-      text-align: center;
+    .page-scroll .eyebrow {
+      color: var(--white);
     }
 
-    .section__eyebrow {
-      font-size: 1.125rem;
-      font-weight: 400;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-sm);
-    }
-
-    .section__title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: 0;
-      text-transform: uppercase;
-      margin-bottom: var(--space-md);
-    }
-
-    .section__lead {
-      font-size: 1.375rem;
-      font-weight: 300;
-      line-height: 1.3;
-      color: var(--color-text-muted);
-    }
-
-    .grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .grid--2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid--3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .grid--4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .split {
-      display: grid;
-      gap: var(--space-2xl);
-      align-items: center;
-    }
-
-    .text-muted {
-      color: var(--color-text-muted);
-    }
-
-    .text-small {
+    .eyebrow {
       font-size: 1rem;
-      opacity: 0.7;
+      line-height: 1.4;
+      color: var(--text);
     }
 
-    .section-block-title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: var(--space-2xl);
+    .lead-sans {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      line-height: 1.4;
+      text-align: center;
+      max-width: 66.875rem;
+      margin-inline: auto;
     }
 
-    /* ==========================================================================
-       COMPONENTS
-       ========================================================================== */
+    .section-title,
+    .split-card__title,
+    .industries__title,
+    .stats-section__title,
+    .press__title,
+    .contact-cta__title,
+    .about-block__title {
+      font-family: var(--font-display);
+      font-size: var(--section-heading-size);
+      font-weight: var(--section-heading-weight);
+      line-height: var(--section-heading-leading);
+      letter-spacing: var(--section-heading-tracking);
+    }
+
+    .scroll-reveal-target {
+      will-change: opacity, transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal-target {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-xs);
-      padding: 0.75rem 1.25rem;
+      min-height: 3.25rem;
+      min-width: 15.375rem;
+      padding: 0.625rem 1.625rem;
       font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      line-height: 1.2;
-      border-radius: var(--radius-sm);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: background var(--transition), border-color var(--transition), color var(--transition);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn--primary {
-      background: var(--gradient-accent);
-      color: var(--color-bg);
-      border-color: transparent;
-      font-weight: 600;
-    }
-
-    .btn--primary:hover {
-      opacity: 0.9;
-      color: var(--color-bg);
-    }
-
-    .btn--secondary {
+      font-size: 1rem;
+      line-height: 1.4;
+      border: 2px solid var(--black);
       background: transparent;
-      color: var(--color-white);
-      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--text);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
     }
 
-    .btn--secondary:hover {
-      border-color: var(--color-gold);
-      color: var(--color-gold);
-    }
+    .btn:hover { background: var(--black); color: var(--white); }
 
     .btn--ghost {
-      background: transparent;
-      color: var(--color-white);
-      border-color: rgba(255, 255, 255, 0.35);
+      border-color: rgba(0, 0, 0, 0.3);
     }
 
-    .btn--ghost:hover {
-      border-color: var(--color-gold);
-      color: var(--color-gold);
+    .btn--white {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .btn--white:hover {
+      background: var(--white);
+      color: var(--black);
     }
 
     .btn-group {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-md);
-    }
-
-    .card {
-      background: var(--color-surface);
-      border: none;
-      border-radius: 0;
-      padding: 2rem;
-    }
-
-    .card__title {
-      font-size: 1.625rem;
-      font-weight: 600;
-      margin-bottom: var(--space-sm);
-      line-height: 1.3;
-      color: var(--color-white);
-    }
-
-    .card__text {
-      font-size: 1.125rem;
-      font-weight: 300;
-      color: var(--color-text-muted);
-      line-height: 1.3;
-    }
-
-    .card__meta {
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-sm);
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: var(--color-text-subtle);
-    }
-
-    .badge--neutral {
-      color: var(--color-text-subtle);
-    }
-
-    .placeholder {
-      display: flex;
-      align-items: center;
+      gap: 2rem;
       justify-content: center;
-      background: var(--color-surface);
-      border: 1px dashed var(--color-border);
-      color: var(--color-text-subtle);
-      font-size: 0.8125rem;
-      text-align: center;
-      padding: var(--space-lg);
     }
 
-    .placeholder__label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.02em;
-    }
-
-    .stat-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-md);
-    }
-
-    .stat-item {
-      padding: var(--space-lg);
-      background: var(--color-surface);
-      border: 1px solid var(--color-border-light);
-    }
-
-    .stat-item__label {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--color-white);
-      margin-bottom: var(--space-xs);
-    }
-
-    .stat-item__desc {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--color-text-muted);
-      line-height: 1.3;
-    }
-
-    .diagram {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-
-    .diagram__item {
-      padding: var(--space-lg);
-      background: var(--color-surface);
-      border: 1px solid var(--color-border-light);
-      text-align: center;
-    }
-
-    .diagram__item--wide {
-      grid-column: span 3;
-    }
-
-    .diagram__icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: 0 auto var(--space-sm);
-      background: rgba(245, 221, 111, 0.15);
-      border-radius: var(--radius-sm);
-    }
-
-    .diagram__label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: var(--space-xs);
-    }
-
-    .diagram__desc {
-      font-size: 0.75rem;
-      color: var(--color-text-muted);
-      line-height: 1.5;
-    }
-
-    .product-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9375rem;
-    }
-
-    .product-table th,
-    .product-table td {
-      padding: var(--space-md) var(--space-lg);
-      text-align: left;
-      border-bottom: 1px solid var(--color-border-light);
-    }
-
-    .product-table th {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      background: var(--color-surface);
-    }
-
-    .product-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .product-table__name {
-      font-weight: 600;
-    }
-
-    .inline-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-lg);
-    }
-
-    .inline-list__item {
-      font-size: 1.125rem;
-      color: var(--color-text-muted);
-    }
-
-    .inline-list__item::before {
-      content: "—";
-      margin-right: var(--space-xs);
-      color: var(--color-text-subtle);
-    }
-
-    /* ==========================================================================
-       HEADER
-       ========================================================================== */
+    /* Header */
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;
-      height: var(--header-height);
-      background: transparent;
-      transition: background var(--transition), border-color var(--transition);
+      z-index: 200;
+      padding-block: 1.25rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, transparent 100%);
     }
 
-    .site-header.is-scrolled {
-      background: rgba(45, 40, 102, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border-light);
-    }
-
-    .site-header__inner {
+    .site-header__bar {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      height: 100%;
-      gap: var(--space-lg);
-      padding-bottom: 0.625rem;
     }
 
     .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--color-white);
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .site-logo span {
-      color: var(--color-gold);
-    }
-
-    .site-logo:hover {
-      color: var(--color-gold);
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--white);
     }
 
     .site-nav {
       display: flex;
       align-items: center;
-      gap: var(--space-xl);
+      gap: 2rem;
     }
 
     .site-nav__list {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.75rem;
     }
 
     .site-nav__link {
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: var(--color-white);
-      text-decoration: none;
-      padding: var(--space-xs) 0;
-      transition: color var(--transition);
+      font-size: 0.9375rem;
+      color: var(--white);
+      opacity: 0.9;
     }
 
-    .site-nav__link:hover {
-      color: var(--color-gold);
-    }
-
-    .site-nav__cta {
-      flex-shrink: 0;
-    }
-
-    .site-nav__cta .btn {
-      font-size: 1rem;
-      padding: 0.625rem 1.125rem;
-    }
+    .site-nav__link:hover { opacity: 1; }
 
     .nav-toggle {
       display: none;
-      background: none;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      padding: var(--space-xs) var(--space-sm);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font: inherit;
       cursor: pointer;
-      font-size: 0.875rem;
-      color: var(--color-white);
     }
-
-    /* ==========================================================================
-       SECTIONS
-       ========================================================================== */
 
     /* Hero */
     .hero {
-      position: relative;
-      min-height: 62.5rem;
-      padding-top: var(--header-height);
-      background: var(--color-bg);
-    }
-
-    .hero__banner {
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 62.5rem;
-      overflow: hidden;
-    }
-
-    .hero__banner-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-    }
-
-    .hero__banner-gradient {
-      position: absolute;
+      --hero-progress: 0;
+      position: fixed;
       inset: 0;
-      background:
-        var(--gradient-hero-top),
-        var(--gradient-hero-bottom);
+      height: 100vh;
+      height: 100dvh;
+      background: var(--navy-deep);
+      color: var(--white);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-spacer {
+      height: 140vh;
+      height: 140dvh;
       pointer-events: none;
     }
 
-    .hero__body {
-      position: relative;
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      will-change: filter;
+    }
+
+    .hero__media img,
+    .hero__media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(calc(1 + var(--hero-progress) * 0.08));
+      filter: blur(calc(var(--hero-progress) * 14px));
+      will-change: filter, transform;
+    }
+
+    .hero__fallback {
+      z-index: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .hero__video {
       z-index: 1;
-      min-height: 62.5rem;
-      display: flex;
-      flex-direction: column;
-      padding-top: 2.5rem;
-      padding-bottom: 3rem;
+      opacity: 0;
+      transition: opacity 0.7s ease;
     }
 
-    .hero__display {
-      margin-top: 2.5rem;
-      margin-bottom: auto;
-      line-height: 1;
+    .hero__media.is-video-ready .hero__video {
+      opacity: 1;
     }
 
-    .hero__display-line {
-      display: block;
-      font-size: clamp(3rem, 10vw, 9.375rem);
-      text-transform: uppercase;
-      color: var(--color-white);
+    .hero__media.is-video-ready .hero__fallback {
+      opacity: 0;
     }
 
-    .hero__display-line--light {
-      font-weight: 300;
+    .hero__dim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(var(--navy-overlay), calc(0.2 + var(--hero-progress) * 0.2)) 0%,
+          rgba(var(--navy-overlay), calc(0.35 + var(--hero-progress) * 0.35)) 100%
+        );
+      pointer-events: none;
     }
 
-    .hero__display-line--bold {
-      font-weight: 700;
-      text-align: right;
-      text-shadow: 0 4px 16px rgba(45, 40, 102, 0.2);
+    .hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(var(--navy-overlay), calc(0.12 + var(--hero-progress) * 0.1)) 0%,
+        rgba(var(--navy-overlay), calc(0.22 + var(--hero-progress) * 0.26)) 100%
+      );
     }
 
-    .hero__intro {
-      align-self: flex-end;
-      max-width: 42.5rem;
-      margin-top: 2rem;
-      font-size: clamp(1.125rem, 2vw, 1.625rem);
-      line-height: 1.3;
-      text-align: right;
-      color: var(--color-white);
-    }
-
-    .hero__lower {
-      margin-top: 3rem;
-      padding-top: 2rem;
-    }
-
-    .hero__actions {
-      margin-bottom: var(--space-2xl);
-    }
-
-    /* Why Now */
-    .why-now__grid .card {
-      border-left: 3px solid var(--color-gold);
-    }
-
-    /* Use Cases */
-    .use-case-card {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-
-    .use-case-card .placeholder {
-      aspect-ratio: 16 / 9;
-      margin-bottom: var(--space-sm);
-    }
-
-    /* About */
-    .about__content {
-      max-width: 40rem;
-    }
-
-    .mission-banner {
+    .hero__content {
       position: relative;
-      margin-inline: calc(-50vw + 50%);
-      width: 100vw;
-      min-height: 37.5rem;
+      z-index: 2;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 7rem var(--pad) clamp(3rem, 8vh, 5.5rem);
+      padding-left: max(var(--pad), calc((100vw - var(--container)) / 2 + var(--pad)));
+      height: 100%;
+      opacity: calc(1 - var(--hero-progress) * 1.25);
+      transition: opacity 0.05s linear;
+    }
+
+    .hero__eyebrow {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      line-height: 1.15;
+      max-width: 62rem;
+      margin-bottom: 3.25rem;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 6vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .hero__stats {
+      position: absolute;
+      top: 50%;
+      right: clamp(7rem, 18vw, 14rem);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3rem;
+      transform: translateY(-50%);
+      opacity: calc(1 - var(--hero-progress) * 1.25);
+      transition: opacity 0.05s linear;
+    }
+
+    .hero__stats .stat-item {
+      gap: 0.75rem;
+      flex: 0 0 auto;
+      min-width: 0;
+    }
+
+    .hero__stats .stat-item__label {
+      font-size: 0.875rem;
+      white-space: nowrap;
+      color: var(--white);
+      opacity: 1;
+    }
+
+    .hero__stats .stat-item__label span {
+      white-space: nowrap;
+    }
+
+    .hero__stats .stat-item__value {
+      font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+      white-space: nowrap;
+    }
+
+    /* Why */
+    .why-section {
+      padding-block: 5rem;
+    }
+
+    .why-section__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: stretch;
+    }
+
+    .why-section__video,
+    .why-section__content {
+      min-width: 0;
+    }
+
+    .why-section__video.is-playing .why-section__video-media {
+      opacity: 1;
+    }
+
+    .why-captions {
+      position: relative;
+      min-height: clamp(12rem, 30vh, 18rem);
+    }
+
+    .why-captions__viewport {
+      position: relative;
+      height: clamp(12rem, 30vh, 18rem);
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+      mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        #000 18%,
+        #000 72%,
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        #000 18%,
+        #000 72%,
+        transparent 100%
+      );
+    }
+
+    .why-captions__viewport::-webkit-scrollbar {
+      width: 0.375rem;
+    }
+
+    .why-captions__viewport::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+    }
+
+    .why-captions__track {
+      padding-bottom: 1.5rem;
+    }
+
+    .why-captions__line {
+      font-size: clamp(1.1rem, 2.2vw, 2rem);
+      line-height: 1.2;
+      margin: 0 0 0.5rem;
+      color: rgba(255, 255, 255, 0.22);
+      transition: color 0.35s ease;
+      white-space: nowrap;
+    }
+
+    .why-captions__line.is-active {
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    .why-captions__line.is-done {
+      color: rgba(255, 255, 255, 0.1);
+    }
+
+    .why-captions__word {
+      display: inline;
+      transition: color 0.2s ease, opacity 0.35s ease;
+      color: rgba(255, 255, 255, 0.22);
+    }
+
+    .why-captions__line.is-active .why-captions__word.is-spoken,
+    .why-captions__line.is-active .why-captions__word.is-current {
+      color: #fff;
+    }
+
+    .why-captions__word.is-current {
+      text-shadow: 0 0 24px rgba(255, 255, 255, 0.15);
+    }
+
+    .why-section__video-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .why-section__video-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 1;
+    }
+
+    .why-section__video-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .why-section__video.is-playing.has-video .why-section__video-poster {
+      opacity: 0;
+    }
+
+    .why-section__video.is-video-fallback .why-section__video-media {
+      opacity: 0;
+    }
+
+    .why-section__video-controls {
+      position: absolute;
+      left: 0.9375rem;
+      bottom: 0.9375rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .why-section__video-play,
+    .why-section__video-mute {
+      width: 3.25rem;
+      height: 3.25rem;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6.875rem;
-      padding: 3.125rem var(--space-lg);
-      text-align: center;
+      background: var(--white);
+      border: 2px solid var(--white);
+      color: var(--black);
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .why-section__video-play.is-playing {
+      font-size: 0.875rem;
+      letter-spacing: -0.05em;
+    }
+
+    .why-section__video-mute {
+      font-size: 1rem;
+    }
+
+    .why-section__video-mute.is-muted {
+      opacity: 0.65;
+    }
+
+    .why-section__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .why-section__content .lead-sans {
+      text-align: left;
+      max-width: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .why-captions__word.is-spoken,
+      .why-captions__word.is-current {
+        color: #fff;
+      }
+    }
+
+    /* Split cards */
+    .split-cards {
+      padding-block: 4rem 1rem;
+    }
+
+    .split-cards__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .split-card {
+      position: relative;
+      min-height: 43.75rem;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 2rem;
+      color: var(--white);
       overflow: hidden;
     }
 
-    .mission-banner__bg {
+    .split-card__bg {
       position: absolute;
       inset: 0;
-      z-index: 0;
     }
 
-    .mission-banner__bg img {
+    .split-card__bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .mission-banner__overlay {
+    .split-card__bg::after {
+      content: "";
       position: absolute;
       inset: 0;
-      background: var(--color-overlay-hero);
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.55) 100%);
     }
 
-    .mission-banner__title,
-    .mission-banner__text {
+    .split-card__title,
+    .split-card__text,
+    .split-card__body,
+    .split-card .btn {
       position: relative;
       z-index: 1;
-      color: var(--color-white);
-      text-transform: uppercase;
     }
 
-    .mission-banner__title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    .split-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      min-width: 0;
+    }
+
+    .split-card__title {
+      margin: 0;
+    }
+
+    .split-card__text {
+      margin: 0;
+      max-width: 26.875rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .split-card .btn {
+      align-self: flex-start;
+      width: auto;
+      max-width: 50%;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    /* Stats */
+    .stats-section {
+      padding-block: 3rem 4rem;
+      color: var(--white);
+    }
+
+    .stats-section__header {
+      margin-bottom: 3rem;
+    }
+
+    .stats-section__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem 2rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-width: 0;
+    }
+
+    .stat-item__label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.3;
+    }
+
+    .stat-item__icon {
+      width: 1.0625rem;
+      height: 1.0625rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      object-fit: contain;
+    }
+
+    .stat-item__value {
+      font-size: clamp(3.5rem, 8vw, 6.25rem);
       font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-odometer {
+      display: inline-flex;
+      align-items: flex-end;
       line-height: 1;
     }
 
-    .mission-banner__text {
-      max-width: 56rem;
-      font-size: clamp(1.25rem, 3vw, 2.5rem);
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    .about__mission {
-      margin-top: var(--space-xl);
-      padding: var(--space-xl);
-      background: var(--color-surface);
-      border-left: 3px solid var(--color-gold);
-    }
-
-    .about__mission-text {
-      font-size: 1.375rem;
-      font-weight: 300;
-      color: var(--color-white);
-      line-height: 1.3;
-    }
-
-    /* GCC */
-    .gcc-item {
-      display: flex;
-      gap: var(--space-md);
-      align-items: flex-start;
-    }
-
-    .gcc-item__marker {
+    .stat-odometer__char {
+      display: inline-block;
+      height: 1em;
+      line-height: 1;
       flex-shrink: 0;
-      width: 4px;
-      height: 100%;
-      min-height: 3rem;
-      background: var(--color-gold);
-      border-radius: 2px;
     }
 
-    /* Products */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    .stat-odometer__digit {
+      display: inline-block;
+      height: 1em;
+      overflow: hidden;
+      vertical-align: top;
+      position: relative;
     }
 
-    .product-card__image {
+    .stat-odometer__reel {
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .stat-odometer__reel span {
+      display: flex;
+      align-items: center;
+      height: 1em;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* Carousel */
+    .carousel-section {
+      background: transparent;
+      color: var(--white);
+      padding-block: 2.5rem 6.5rem;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
       width: 100%;
-      aspect-ratio: 400 / 296;
-      object-fit: contain;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .carousel__intro {
+      text-align: center;
+      margin-top: 0.75rem;
       margin-bottom: 1rem;
     }
 
-    .product-card__status {
-      font-size: 1.125rem;
-      color: var(--color-text-subtle);
+    .carousel__name {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
 
-    .product-table-wrap {
-      display: none;
+    .carousel__status {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
     }
 
-    /* Schematics */
-    .schematic-block {
-      margin-top: var(--space-4xl);
-    }
-
-    .schematic-block__visual {
+    .carousel__stage {
+      position: relative;
       width: 100%;
-      margin-top: var(--space-2xl);
+      height: 32rem;
+      perspective: 1400px;
+      transform-style: preserve-3d;
     }
 
-    .schematic-block__visual img {
-      width: 100%;
+    .carousel__cloud {
+      position: absolute;
+      left: 50%;
+      bottom: 8%;
+      z-index: 3;
+      width: min(48rem, 78vw);
       height: auto;
+      transform: translateX(-50%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.92;
+    }
+
+    .carousel__slide {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(40rem, 70vw);
+      height: min(30rem, 52vw);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      will-change: transform, opacity, filter;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .carousel__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel.is-animating .carousel__nav button {
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .carousel__desc {
+      max-width: 28rem;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.55;
+    }
+
+    .carousel__nav {
+      display: flex;
+      gap: 1.875rem;
+      justify-content: center;
+    }
+
+    .carousel__nav button {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1.75rem;
+      border: 1px solid #e5eef7;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(9px);
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    /* Industries */
+    .industries {
+      padding: 5rem 0;
+    }
+
+    .industries__header {
+      margin-bottom: 3rem;
+    }
+
+    .industries__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .industry-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      min-height: 100%;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      overflow: hidden;
+    }
+
+    .industry-card__image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       display: block;
     }
 
-    .link-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: var(--space-lg);
-      font-size: 1.125rem;
-      color: var(--color-white);
-      text-decoration: none;
-    }
-
-    .link-more:hover {
-      color: var(--color-gold);
-    }
-
-    .link-more--accent {
-      color: var(--color-gold);
-    }
-
-  /* Partnership */
-    .partnership-card .card__title {
+    .industry-card__body {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-md);
+      flex-direction: column;
+      gap: 1.25rem;
+      flex: 1;
+      padding: 1.5rem 2rem 2rem;
     }
 
-    /* Final CTA */
-    .final-cta {
-      text-align: center;
+    .industry-card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: var(--section-heading-weight);
+      line-height: var(--section-heading-leading);
+      letter-spacing: var(--section-heading-tracking);
     }
 
-    .final-cta__title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-md);
-      max-width: 36rem;
-      margin-inline: auto;
+    .industry-card__desc {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.55;
     }
 
-    .final-cta__lead {
-      font-size: 1.375rem;
-      font-weight: 300;
-      color: var(--color-text-muted);
-      max-width: 36rem;
-      margin-inline: auto;
-      margin-bottom: var(--space-xl);
-    }
-
-    .final-cta__actions {
-      justify-content: center;
-      margin-bottom: var(--space-2xl);
-    }
-
-    .contact-block {
+    .industry-card__stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-      max-width: 48rem;
-      margin-inline: auto;
-      padding-top: var(--space-xl);
-      border-top: 1px solid var(--color-border);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .contact-block__item {
-      text-align: center;
-    }
-
-    .contact-block__label {
-      font-size: 0.75rem;
+    .industry-stat__value {
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-subtle);
-      margin-bottom: var(--space-xs);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
 
-    .contact-block__value {
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
+    .industry-stat__label {
+      font-size: 0.75rem;
+      line-height: 1.3;
+      opacity: 0.4;
+    }
+
+    /* Press */
+    .press {
+      padding: 5rem 0;
+    }
+
+    .press__header {
+      margin-bottom: 4rem;
+    }
+
+    .press__track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .press-card {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .press-card__image {
+      aspect-ratio: 1;
+      background: transparent;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+
+    .press-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .press-card__source {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .press-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 1.5rem;
+    }
+
+    .press-card__excerpt {
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.55;
+      flex: 1;
+      margin-bottom: 2rem;
+    }
+
+    .press-card .btn {
+      margin-top: auto;
+      margin-bottom: 0;
+      align-self: flex-start;
+      width: auto;
+      min-width: 0;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      padding-block: 5rem;
+    }
+
+    .contact-cta__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      min-height: 45rem;
+    }
+
+    .contact-cta__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 2.5rem;
+    }
+
+    .contact-cta__text {
+      max-width: 25rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.55;
+    }
+
+    .contact-cta__visual {
+      background: transparent;
+      min-height: 28rem;
+      overflow: hidden;
+    }
+
+    .contact-cta__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* About */
+    .about-block {
+      padding: 5rem var(--pad);
+    }
+
+    .about-block__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: var(--container);
+      margin-inline: auto;
+      align-items: start;
+    }
+
+    .about-block__text {
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.55;
+      margin-bottom: 2rem;
     }
 
     /* Footer */
     .site-footer {
-      padding-block: 4rem 3.125rem;
-      background: var(--color-bg);
-      border-top: 8px solid var(--color-coral);
-    }
-
-    .site-footer__top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-2xl);
-      margin-bottom: 2.125rem;
-    }
-
-    .site-footer__brand {
-      max-width: 21rem;
+      position: relative;
+      z-index: 10;
+      padding-block: 5rem 2.5rem;
+      background: transparent;
+      color: var(--white);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .site-footer__logo {
+      font-family: var(--font-display);
       font-size: 1.125rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--color-white);
-      margin-bottom: 2.75rem;
-      display: block;
-      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      opacity: 0.5;
+      margin-bottom: 2.5rem;
+      display: inline-block;
     }
 
-    .site-footer__address {
-      font-size: 1.125rem;
-      line-height: 1.3;
-      color: var(--color-white);
-    }
-
-    .site-footer__col {
-      min-width: 12rem;
-    }
-
-    .site-footer__col-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--color-white);
-      margin-bottom: 1rem;
-    }
-
-    .site-footer__col-link {
-      display: block;
-      font-size: 1.125rem;
-      color: var(--color-gold);
-      text-decoration: none;
-      margin-bottom: 1rem;
-    }
-
-    .site-footer__col-link--muted {
-      color: var(--color-white);
-    }
-
-    .site-footer__col-text {
-      font-size: 1.125rem;
-      color: var(--color-white);
-    }
-
-    .scroll-top {
+    .site-footer__grid {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: var(--radius-lg);
-      background: var(--gradient-accent);
-      border: none;
-      cursor: pointer;
-      flex-shrink: 0;
-      text-decoration: none;
-      color: var(--color-bg);
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-
-    .site-footer__bottom {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: var(--space-lg);
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .site-footer__cols {
+      display: flex;
+      gap: 5.5rem;
       flex-wrap: wrap;
     }
 
+    .site-footer__col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .site-footer__col a {
+      font-size: 1rem;
+      color: var(--white);
+      opacity: 0.45;
+    }
+
+    .site-footer__col a:hover { opacity: 0.7; }
+
     .site-footer__social {
       display: flex;
+      align-items: center;
       gap: 1rem;
     }
 
-    .site-footer__social-link {
+    .site-footer__social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border: 1px solid var(--color-border);
-      border-radius: 50%;
-      color: var(--color-white);
-      font-size: 0.75rem;
-      text-decoration: none;
+      width: 2.25rem;
+      height: 2.25rem;
+      color: var(--white);
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
     }
 
-    .site-footer__legal {
-      text-align: right;
+    .site-footer__social a:hover {
+      opacity: 1;
+    }
+
+    .site-footer__social img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .site-footer__copy {
       font-size: 1rem;
-      color: var(--color-text-subtle);
+      color: var(--white);
+      opacity: 0.45;
     }
 
-    .site-footer__legal a {
-      color: var(--color-text-subtle);
-      text-decoration: underline;
-    }
-
-    /* ==========================================================================
-       RESPONSIVE
-       ========================================================================== */
-    @media (min-width: 64rem) {
-      .split {
-        grid-template-columns: 1fr 1fr;
+    @media (prefers-reduced-motion: reduce) {
+      .hero__media img,
+      .hero__media video {
+        transform: none;
+        filter: none;
       }
+
+      .hero__video {
+        display: none;
+      }
+
+      .hero__dim {
+        background: linear-gradient(
+          180deg,
+          rgba(var(--navy-overlay), calc(0.2 + var(--hero-progress) * 0.2)) 0%,
+          rgba(var(--navy-overlay), calc(0.35 + var(--hero-progress) * 0.35)) 100%
+        );
+      }
+
+      .hero__stats {
+        display: none;
+      }
+    }
+
+    @media (max-width: 75rem) {
+      .hero__stats {
+        right: clamp(4rem, 11vw, 7rem);
+        gap: 2.25rem;
+      }
+
+      .hero__stats .stat-item__value {
+        font-size: clamp(2rem, 3.5vw, 3.25rem);
+      }
+
+      .hero__stats .stat-item__label {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 75rem) {
+      .carousel__stage { height: min(78vw, 28rem); }
     }
 
     @media (max-width: 63.99rem) {
-      .grid--4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stat-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .diagram {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .diagram__item--wide {
-        grid-column: span 2;
-      }
-
-      .contact-block {
-        grid-template-columns: 1fr;
-      }
+      .split-cards__grid,
+      .contact-cta__grid,
+      .about-block__grid,
+      .why-section__grid { grid-template-columns: 1fr; }
+      .stats-section__grid { grid-template-columns: repeat(2, 1fr); }
+      .press__track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .industries__grid { grid-template-columns: repeat(2, 1fr); }
+      .split-card { min-height: 28rem; }
     }
 
     @media (max-width: 47.99rem) {
-      .section {
-        padding-block: var(--space-3xl);
-      }
-
-      .grid--2,
-      .grid--3,
-      .grid--4 {
-        grid-template-columns: 1fr;
-      }
-
-      .stat-list {
-        grid-template-columns: 1fr;
-      }
-
-      .diagram {
-        grid-template-columns: 1fr;
-      }
-
-      .diagram__item--wide {
-        grid-column: span 1;
-      }
-
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero__banner,
-      .hero__body {
-        min-height: 36rem;
-      }
-
-      .hero__display-line--bold {
-        text-align: left;
-      }
-
-      .hero__intro {
-        text-align: left;
-        align-self: stretch;
-      }
-
-      .site-footer__top {
-        flex-direction: column;
-      }
-
       .site-nav__list {
         display: none;
         position: absolute;
-        top: var(--header-height);
-        left: 0;
+        top: 100%;
         right: 0;
         flex-direction: column;
-        background: var(--color-bg);
-        border-bottom: 1px solid var(--color-border-light);
-        padding: var(--space-lg);
-        gap: var(--space-sm);
+        background: rgba(0,0,0,0.9);
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        gap: 0.75rem;
       }
-
-      .site-nav__list.is-open {
-        display: flex;
+      .site-nav__list.is-open { display: flex; }
+      .site-nav { position: relative; }
+      .nav-toggle { display: block; }
+      .hero__content {
+        padding: 6rem var(--pad) clamp(2rem, 6vh, 3.5rem);
+        padding-left: max(var(--pad), calc((100vw - var(--container)) / 2 + var(--pad)));
       }
-
-      .site-nav {
-        position: relative;
-      }
-
-      .nav-toggle {
-        display: block;
-      }
-
-      .site-nav__cta .btn {
-        padding: 0.5rem 0.875rem;
-        font-size: 0.8125rem;
-      }
-
-      .product-table {
-        display: block;
-        overflow-x: auto;
-      }
-
-      .hero__visual .placeholder {
-        min-height: 200px;
-      }
+      .hero__stats { display: none; }
+      .carousel-section { padding-block: 1.5rem 4rem; }
+      .press__track { grid-template-columns: 1fr; }
+      .industries__grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!--
-  PROJECT: Aeronova Exhibition Landing Page — Dubai / GCC
-  PURPOSE: B2B one-page presentation for trade show audience
-  AUDIENCE: Strategic partners, B2B customers, dealers, investors, tourism/logistics/infrastructure sectors
-
-  PAGE SECTIONS:
-  1. Hero
-  2. Why Now
-  3. Why Airships
-  4. How It Works
-  5. Use Cases
-  6. About Aeronova
-  7. Product Lineup
-  8. GCC / Dubai Opportunities
-  9. Partnership Models
-  10. Final CTA
--->
-
-<!-- HEADER -->
 <header class="site-header">
-  <div class="container site-header__inner">
-    <a href="#hero" class="site-logo"><span>A</span>ERONOVA</a>
+  <div class="site-header__bar">
+    <a href="#hero" class="site-logo">AERONOVA</a>
     <nav class="site-nav" aria-label="Основная навигация">
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
-        Меню
-      </button>
+      <button class="nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Меню</button>
       <ul class="site-nav__list" id="nav-menu">
-        <li><a href="#why-now" class="site-nav__link">Почему сейчас</a></li>
-        <li><a href="#why-airships" class="site-nav__link">Технология</a></li>
-        <li><a href="#use-cases" class="site-nav__link">Применение</a></li>
-        <li><a href="#about" class="site-nav__link">О компании</a></li>
-        <li><a href="#products" class="site-nav__link">Проекты</a></li>
-        <li><a href="#gcc" class="site-nav__link">Персидский залив</a></li>
-        <li><a href="#partnership" class="site-nav__link">Партнёрство</a></li>
+        <li><a href="#why" class="site-nav__link">О компании</a></li>
+        <li><a href="#projects" class="site-nav__link">Проекты</a></li>
+        <li><a href="#press" class="site-nav__link">Пресс-центр</a></li>
+        <li><a href="#contact" class="site-nav__link">Контакты</a></li>
       </ul>
-      <div class="site-nav__cta">
-        <a href="#contact" class="btn btn--primary">Запросить встречу</a>
-      </div>
     </nav>
   </div>
 </header>
 
 <main>
-
-  <!-- 1. HERO -->
+  <!-- Hero -->
   <section id="hero" class="hero">
-    <div class="hero__banner" aria-hidden="true">
-      <img class="hero__banner-image" src="assets/hero.jpg" alt="">
-      <div class="hero__banner-gradient"></div>
+    <div class="hero__media" aria-hidden="true">
+      <img class="hero__fallback" src="assets/hero-airship-v2.jpg" alt="">
+      <video class="hero__video" id="hero-video" playsinline muted preload="auto" poster="assets/hero-airship-v2.jpg">
+        <source src="assets/hero-bg.mp4?v=4" type="video/mp4">
+      </video>
     </div>
-    <div class="container hero__body">
-      <h1 class="hero__display">
-        <span class="hero__display-line hero__display-line--light">Мы строим</span>
-        <span class="hero__display-line hero__display-line--bold">дирижабли</span>
-      </h1>
-      <p class="hero__intro">
-        Мы молодая российская компания, взявшаяся за разработку, производство и коммерческую эксплуатацию летательных аппаратов дирижабельного типа.
-      </p>
-      <div class="hero__lower">
-        <div class="hero__actions btn-group">
-          <a href="#contact" class="btn btn--primary">Запросить встречу</a>
-          <a href="#partnership" class="btn btn--secondary">Стать партнёром</a>
+    <div class="hero__dim" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">ДИРИЖАБЛИ<br>НОВОГО<br>ПОКОЛЕНИЯ</h1>
+      <a href="#why" class="btn btn--white">Узнать больше</a>
+    </div>
+
+    <aside class="hero__stats" aria-label="Почему сейчас">
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-droplet.svg" alt="">
+          <span>Расход топлива vs вертолёт</span>
         </div>
-        <div class="stat-list" role="list" aria-label="Компетенции компании">
-          <div class="stat-item" role="listitem">
-            <p class="stat-item__label">Разработка</p>
-            <p class="stat-item__desc">Проектирование и инженерия дирижабельной техники</p>
-          </div>
-          <div class="stat-item" role="listitem">
-            <p class="stat-item__label">Производство</p>
-            <p class="stat-item__desc">Изготовление воздухоплавательных систем</p>
-          </div>
-          <div class="stat-item" role="listitem">
-            <p class="stat-item__label">Коммерческая эксплуатация</p>
-            <p class="stat-item__desc">Внедрение и операционный опыт</p>
-          </div>
-          <div class="stat-item" role="listitem">
-            <p class="stat-item__label">Дирижабельные системы</p>
-            <p class="stat-item__desc">Разработка интегрированных платформ</p>
+        <p class="stat-item__value" data-value="−55%" aria-label="минус 55 процентов">−55%</p>
+      </article>
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-briefcase.svg" alt="">
+          <span>Груз без аэродрома</span>
+        </div>
+        <p class="stat-item__value" data-value="3–5&nbsp;т" aria-label="3–5 тонн">3–5 т</p>
+      </article>
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-star.svg" alt="">
+          <span>Полёт без посадки</span>
+        </div>
+        <p class="stat-item__value" data-value="6–10&nbsp;ч" aria-label="6–10 часов">6–10 ч</p>
+      </article>
+    </aside>
+  </section>
+
+  <div class="hero-spacer" aria-hidden="true"></div>
+
+  <div class="page-scroll">
+  <!-- Why -->
+  <section id="why" class="why-section section-light">
+    <div class="why-section__grid">
+      <div class="why-section__video" id="why-video">
+        <div class="why-section__video-thumb">
+          <video class="why-section__video-media" id="why-video-el" poster="assets/video-thumb.jpg" playsinline preload="auto" muted>
+            <source src="assets/why-video.mp4?v=1" type="video/mp4">
+          </video>
+          <img class="why-section__video-poster" src="assets/video-thumb.jpg" alt="Интервью о дирижабельных проектах Aeronova">
+          <div class="why-section__video-controls">
+            <button class="why-section__video-play" type="button" id="why-video-play" aria-label="Смотреть видео">▶</button>
+            <button class="why-section__video-mute is-muted" type="button" id="why-video-mute" aria-label="Включить звук" aria-pressed="true">🔇</button>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 2. WHY NOW -->
-  <section id="why-now" class="section section--alt">
-    <div class="container">
-      <header class="section__header">
-        <h2 class="section-block-title">Почему сейчас</h2>
-        <p class="section__lead">
-          В туризме, логистике, инфраструктуре и специальных миссиях операторы вновь оценивают платформы с длительным временем на станции, заметным присутствием и гибкостью задач — без необходимости полноценной аэродромной инфраструктуры в каждой точке применения.
-        </p>
-      </header>
-      <div class="grid grid--2 why-now__grid">
-        <article class="card">
-          <h3 class="card__title">Туризм и впечатления</h3>
-          <p class="card__text">Медленный полёт на малой высоте подходит для экскурсионных и премиальных маршрутов, где само путешествие — часть продукта.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Логистика в удалённых районах</h3>
-          <p class="card__text">Там, где ограничен доступ по дорогам и ВПП, воздухоплавательные платформы могут дополнять транспортную систему на выбранных грузовых направлениях.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Мониторинг инфраструктуры</h3>
-          <p class="card__text">Длительное присутствие в воздухе поддерживает инспекцию трубопроводов, коридоров и объектов с устойчивой точки обзора и меньшим числом перебазирований.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Специальные миссии</h3>
-          <p class="card__text">Ретрансляция связи, наблюдение и стратосферные задачи выигрывают от платформ, рассчитанных на выносливость и контролируемую эксплуатацию.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. WHY AIRSHIPS -->
-  <section id="why-airships" class="section">
-    <div class="container">
-      <header class="section__header section__header--center">
-        <h2 class="section-block-title">Почему дирижабли</h2>
-        <p class="section__lead">
-          Не замена всей авиации — дифференцированная платформа там, где важны выносливость, обзорность и меньшая зависимость от инфраструктуры.
-        </p>
-      </header>
-      <div class="grid grid--3">
-        <article class="card">
-          <h3 class="card__title">Ориентированный на безопасность профиль полёта</h3>
-          <p class="card__text">Меньшие скорости и аэростатическая подъёмная сила поддерживают контролируемые операции для наблюдения и близких миссий.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Выносливость</h3>
-          <p class="card__text">Длительное время на станции сокращает циклы перебазирования при мониторинге, ретрансляции и постоянном наблюдении.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Меньшая зависимость от инфраструктуры</h3>
-          <p class="card__text">Эксплуатацию можно выстроить с меньшей привязкой к стационарным ВПП по сравнению с классической авиацией.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Воздушная заметность</h3>
-          <p class="card__text">Крупный обтекатель и устойчивые траектории обеспечивают прямую видимость для наблюдения, событий и брендинга.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Эффективность для выбранных задач</h3>
-          <p class="card__text">Для определённых маршрутов и полезной нагрузки воздухоплавательные системы могут давать операционные преимущества.</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Комфорт и наблюдение</h3>
-          <p class="card__text">Медленный полёт с низкой вибрацией подходит для пассажирского комфорта и длительного визуального наблюдения.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. HOW IT WORKS -->
-  <section id="how-it-works" class="section section--alt">
-    <div class="container">
-      <div class="split">
-        <div>
-          <header class="section__header">
-            <h2 class="section-block-title">Как это устроено</h2>
-            <p class="section__lead">
-              Интегрированная воздухоплавательная система объединяет аэростатическую подъёмную силу, движение, управление и полезную нагрузку в платформу под конкретную миссию — с дистанционным или экипажным управлением.
-            </p>
-          </header>
-          <p class="text-muted text-small">
-            Каждая подсистема проектируется под класс дирижабля, эксплуатационный диапазон и нормативные требования целевой миссии.
-          </p>
-        </div>
-        <div>
-          <div class="diagram" aria-label="Схема архитектуры дирижабля">
-            <div class="diagram__item diagram__item--wide">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Оболочка</p>
-              <p class="diagram__desc">Газонепроницаемая конструкция, задающая аэродинамическую форму и объём подъёма</p>
-            </div>
-            <div class="diagram__item">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Подъёмный газ</p>
-              <p class="diagram__desc">Аэростатическая среда внутри оболочки</p>
-            </div>
-            <div class="diagram__item">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Движители</p>
-              <p class="diagram__desc">Системы тяги для маневрирования и перелёта</p>
-            </div>
-            <div class="diagram__item">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Системы управления</p>
-              <p class="diagram__desc">Управление полётом, навигация и устойчивость</p>
-            </div>
-            <div class="diagram__item">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Полезная нагрузка</p>
-              <p class="diagram__desc">Пассажиры, груз, сенсоры или миссионное оборудование</p>
-            </div>
-            <div class="diagram__item">
-              <div class="diagram__icon" aria-hidden="true"></div>
-              <p class="diagram__label">Эксплуатация</p>
-              <p class="diagram__desc">Дистанционное или бортовое управление миссией</p>
-            </div>
-          </div>
-          <div class="schematic-block">
-            <h3 class="section-block-title" style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: var(--space-2xl);">Аэродром</h3>
-            <div class="schematic-block__visual">
-              <img src="assets/airfield.png" alt="Схема аэродрома">
-            </div>
-            <a href="#contact" class="link-more">Подробнее <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="schematic-block">
-            <h3 class="section-block-title" style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: var(--space-2xl);">Производство</h3>
-            <div class="schematic-block__visual">
-              <img src="assets/production.png" alt="Схема производственного комплекса">
-            </div>
-            <a href="#contact" class="link-more link-more--accent">Подробнее <span aria-hidden="true">↗</span></a>
+      <div class="why-section__content">
+        <p class="eyebrow" style="margin-bottom: 2rem;">Почему дирижабли</p>
+        <div class="why-captions" id="why-captions" aria-live="polite">
+          <div class="why-captions__viewport" id="why-captions-viewport" tabindex="0" aria-label="Текст о компании, прокрутите для чтения">
+            <div class="why-captions__track" id="why-captions-track"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. USE CASES -->
-  <section id="use-cases" class="section">
+  <!-- Advantages -->
+  <section class="industries" id="advantages">
     <div class="container">
-      <header class="section__header section__header--center">
-        <h2 class="section-block-title">Сценарии применения</h2>
-        <p class="section__lead">
-          Дирижабельные платформы закрывают определённый набор коммерческих и операционных задач, где характеристики платформы совпадают с требованиями миссии.
-        </p>
-      </header>
-      <div class="grid grid--3">
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — туризм">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Туризм и экскурсии</h3>
-          <p class="card__text">Премиальные полёты и живописные маршруты над достопримечательностями и природными ландшафтами.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — грузовая логистика">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Грузоперевозки и удалённый доступ</h3>
-          <p class="card__text">Точечная доставка и снабжение там, где классическая инфраструктура ограничена.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — мониторинг инфраструктуры">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Мониторинг инфраструктуры и трубопроводов</h3>
-          <p class="card__text">Длительная воздушная инспекция коридоров, объектов и критической инфраструктуры.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — реклама и события">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Реклама и события</h3>
-          <p class="card__text">Заметное воздушное присутствие для брендинга, фестивалей и крупных мероприятий.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — связь">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Платформа связи</h3>
-          <p class="card__text">Временная или полупостоянная ретрансляция и поддержка связи в заданной зоне покрытия.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — пассажирская мобильность">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Пассажирская мобильность</h3>
-          <p class="card__text">Региональные и точечные пассажирские перевозки на выбранных маршрутах.</p>
-        </article>
-        <article class="card use-case-card">
-          <div class="placeholder" role="img" aria-label="Визуал — стратосферные миссии">
-            <span class="placeholder__label">[ Визуал ]</span>
-          </div>
-          <h3 class="card__title">Стратосферные и специальные миссии</h3>
-          <p class="card__text">Контролируемые высотные операции для наблюдения, исследований и специализированных полезных нагрузок.</p>
-        </article>
+      <div class="industries__header">
+        <h2 class="industries__title">Почему сейчас</h2>
       </div>
-      <div class="btn-group" style="justify-content: center; margin-top: var(--space-2xl);">
-        <a href="#contact" class="btn btn--primary">Обсудить ваш сценарий</a>
+      <div class="industries__grid">
+        <article class="industry-card">
+          <img class="industry-card__image" src="assets/industry-tourism.png" alt="Туризм на дирижабле">
+          <div class="industry-card__body">
+          <h3 class="industry-card__title">Туризм</h3>
+          <p class="industry-card__desc">Выгоднее вертолёта: ниже расход топлива, плавный полёт и зависание над маршрутом. Достаточно площадки — без ВПП.</p>
+          <div class="industry-card__stats">
+            <div>
+              <p class="industry-stat__value">−55%</p>
+              <p class="industry-stat__label">топливо vs вертолёт</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">6–10 ч</p>
+              <p class="industry-stat__label">полёт без посадки</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">×2,5</p>
+              <p class="industry-stat__label">вместимость vs вертолёт</p>
+            </div>
+          </div>
+          </div>
+        </article>
+        <article class="industry-card">
+          <img class="industry-card__image" src="assets/industry-agriculture.png" alt="Дирижабль в сельском хозяйстве">
+          <div class="industry-card__body">
+          <h3 class="industry-card__title">Сельское хозяйство</h3>
+          <p class="industry-card__desc">Сотни гектаров за вылет — дешевле дронов и вертолётной авиахимии. Меньше тяжёлой техники на поле.</p>
+          <div class="industry-card__stats">
+            <div>
+              <p class="industry-stat__value">400+ га</p>
+              <p class="industry-stat__label">за один вылет</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">−35%</p>
+              <p class="industry-stat__label">vs авиахимия</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">×8</p>
+              <p class="industry-stat__label">охват vs БПЛА</p>
+            </div>
+          </div>
+          </div>
+        </article>
+        <article class="industry-card">
+          <img class="industry-card__image" src="assets/industry-logistics.png" alt="Логистика на дирижабле">
+          <div class="industry-card__body">
+          <h3 class="industry-card__title">Логистика</h3>
+          <p class="industry-card__desc">В регионах без дорог — дешевле вертолёта и быстрее зимника. Достаточно площадки с причальной мачтой.</p>
+          <div class="industry-card__stats">
+            <div>
+              <p class="industry-stat__value">−45%</p>
+              <p class="industry-stat__label">тонно-км vs вертолёт</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">3–5 т</p>
+              <p class="industry-stat__label">груз без аэродрома</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">×12</p>
+              <p class="industry-stat__label">быстрее зимника</p>
+            </div>
+          </div>
+          </div>
+        </article>
+        <article class="industry-card">
+          <img class="industry-card__image" src="assets/industry-monitoring.png" alt="Мониторинг с дирижабля">
+          <div class="industry-card__body">
+          <h3 class="industry-card__title">Мониторинг</h3>
+          <p class="industry-card__desc">Часы над объектом в реальном времени — оперативнее спутника и дешевле роя дронов.</p>
+          <div class="industry-card__stats">
+            <div>
+              <p class="industry-stat__value">24/7</p>
+              <p class="industry-stat__label">мониторинг с борта</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">−60%</p>
+              <p class="industry-stat__label">vs рой БПЛА</p>
+            </div>
+            <div>
+              <p class="industry-stat__value">200 км</p>
+              <p class="industry-stat__label">трасса за вылет</p>
+            </div>
+          </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 6. ABOUT AERONOVA -->
-  <section id="about" class="section section--alt">
-    <div class="container">
-      <div class="about__content">
-        <h2 class="section-block-title">О компании</h2>
-        <p class="text-muted" style="margin-bottom: var(--space-md);">
-          «Аэронова» — молодая российская компания, взявшаяся за разработку, производство и коммерческую эксплуатацию летательных аппаратов дирижабельного типа.
-        </p>
-        <p class="text-muted" style="margin-bottom: var(--space-md);">
-          Компания создаёт интегрированные воздухоплавательные платформы — от проектирования и производства до операционного внедрения — с фокусом на практические коммерческие применения.
-        </p>
-        <p class="text-muted">
-          «Аэронова» позиционирует себя как инженерную организацию, работающую над несколькими дирижабельными программами и связанными аэростатическими системами с активной разработкой по всему портфелю проектов.
-        </p>
-      </div>
+  <!-- Stats -->
+  <section id="stats" class="stats-section" aria-labelledby="stats-title">
+    <div class="stats-section__header">
+      <h2 class="stats-section__title" id="stats-title">Aeronova Today</h2>
     </div>
-  </section>
-
-  <section class="mission-banner" aria-labelledby="mission-title">
-    <div class="mission-banner__bg" aria-hidden="true">
-      <img src="assets/mission.jpg" alt="">
-      <div class="mission-banner__overlay"></div>
-    </div>
-    <h2 class="mission-banner__title" id="mission-title">Наша миссия</h2>
-    <p class="mission-banner__text">Интегрировать воздухоплавательную технику в современную экономику, расширяя представление о транспорте</p>
-  </section>
-
-  <!-- 7. PRODUCT LINEUP -->
-  <section id="products" class="section">
-    <div class="container">
-      <h2 class="section-block-title">Проекты</h2>
-      <p class="section__lead" style="margin-bottom: var(--space-2xl); max-width: 40rem;">
-        Активные программы на разных стадиях разработки дирижаблей и стратосферных аэростатов. Статусы соответствуют текущим данным компании.
-      </p>
-
-      <div class="product-grid">
-        <article class="card product-card">
-          <h3 class="card__title">NOVA-01</h3>
-          <img class="product-card__image" src="assets/nova-01.png" alt="Схема дирижабля NOVA-01">
-          <p class="product-card__status">Испытания</p>
-        </article>
-        <article class="card product-card">
-          <h3 class="card__title">NOVA-2</h3>
-          <img class="product-card__image" src="assets/nova-2.png" alt="Схема дирижабля NOVA-2">
-          <p class="product-card__status">Разработка</p>
-        </article>
-        <article class="card product-card">
-          <h3 class="card__title">NOVA-8</h3>
-          <img class="product-card__image" src="assets/nova-8.png" alt="Схема дирижабля NOVA-8">
-          <p class="product-card__status">Проектирование</p>
-        </article>
-      </div>
-
-      <article class="card" style="margin-top: 1.5rem;">
-        <h3 class="card__title">Управляемые стратосферные аэростаты</h3>
-        <p class="card__text">Высотные аэростатические системы на стадии испытаний.</p>
-        <p class="product-card__status" style="margin-top: 1rem;">Испытания</p>
+    <div class="stats-section__grid">
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-star.svg" alt="">
+          <span>Активных проекта</span>
+        </div>
+        <p class="stat-item__value" data-value="3" aria-label="3">3</p>
+      </article>
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-plane.svg" alt="">
+          <span>Испытательных полётов</span>
+        </div>
+        <p class="stat-item__value" data-value="14" aria-label="14">14</p>
+      </article>
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-user.svg" alt="">
+          <span>Человек в команде</span>
+        </div>
+        <p class="stat-item__value" data-value="45" aria-label="45">45</p>
+      </article>
+      <article class="stat-item">
+        <div class="stat-item__label">
+          <img class="stat-item__icon" src="assets/icons/stat-compass.svg" alt="">
+          <span>Направления применения</span>
+        </div>
+        <p class="stat-item__value" data-value="4" aria-label="4">4</p>
       </article>
     </div>
   </section>
 
-  <!-- 8. GCC / DUBAI -->
-  <section id="gcc" class="section section--alt">
+  <!-- Airfield + Production -->
+  <section class="split-cards">
+    <div class="split-cards__grid">
+      <article class="split-card">
+        <div class="split-card__bg" aria-hidden="true"><img src="assets/card-airfield.jpg" alt=""></div>
+        <div class="split-card__body">
+          <h2 class="split-card__title">Аэродром</h2>
+          <p class="split-card__text">Наземная инфраструктура для дирижаблей не требует полноценной ВПП. Достаточно открытой площадки с причальной мачтой. Это снижает стоимость развёртывания и открывает маршруты туда, куда обычная авиация не доходит.</p>
+        </div>
+        <a href="#contact" class="btn btn--white">Запросить встречу</a>
+      </article>
+      <article class="split-card">
+        <div class="split-card__bg" aria-hidden="true"><img src="assets/card-production.jpg" alt=""></div>
+        <div class="split-card__body">
+          <h2 class="split-card__title">Производство</h2>
+          <p class="split-card__text">Мы производим оболочки, гондолы и системы управления внутри страны. Каждый элемент проектируется под конкретный класс дирижабля и эксплуатационные требования миссии.</p>
+        </div>
+        <a href="#contact" class="btn btn--white">Запросить встречу</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Projects carousel -->
+  <section id="projects" class="carousel-section">
     <div class="container">
-      <header class="section__header">
-        <h2 class="section-block-title">Персидский залив и Дубай</h2>
-        <p class="section__lead">
-          В регионе Персидского залива есть понятные коммерческие точки входа, где характеристики дирижабельных платформ совпадают со структурой рынка — туризм, логистика, инфраструктура и события.
-        </p>
-      </header>
-      <div class="grid grid--2">
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Премиальный туризм</h3>
-            <p class="card__text">Воздушные экскурсии и впечатляющие маршруты над городскими достопримечательностями, побережьями и пустынными ландшафтами — в русле инвестиций региона в гостеприимство и туризм.</p>
-          </div>
-        </article>
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Пустынная логистика</h3>
-            <p class="card__text">Дополнительный транспорт для удалённых площадок, энергообъектов и маршрутов снабжения там, где наземная инфраструктура разрежена или сезонна.</p>
-          </div>
-        </article>
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Инспекция инфраструктуры</h3>
-            <p class="card__text">Воздушный мониторинг трубопроводов, промышленных коридоров, портов и крупных строительных проектов по всему региону.</p>
-          </div>
-        </article>
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Событийная активация</h3>
-            <p class="card__text">Заметное воздушное присутствие на международных событиях, выставках и брендовых кампаниях — устоявшийся сценарий в региональной событийной экономике.</p>
-          </div>
-        </article>
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Временная связь и наблюдение</h3>
-            <p class="card__text">Воздушные ретрансляторы и платформы наблюдения для заданных зон покрытия — поддержка связи и ситуационной осведомлённости.</p>
-          </div>
-        </article>
-        <article class="card gcc-item">
-          <div class="gcc-item__marker" aria-hidden="true"></div>
-          <div>
-            <h3 class="card__title">Региональный партнёрский хаб</h3>
-            <p class="card__text">Дубай как точка входа для делового взаимодействия, дилерского представительства и стратегических партнёрств на рынке стран Персидского залива.</p>
-          </div>
-        </article>
+      <div class="carousel" id="projects-carousel">
+      <div class="carousel__stage" id="carousel-stage">
+        <img class="carousel__cloud" src="assets/carousel-cloud.png" alt="" aria-hidden="true">
+        <div class="carousel__slide" data-slide-index="0" aria-hidden="true">
+          <img src="assets/carousel-nova-01.png" alt="Дирижабль NOVA-01">
+        </div>
+        <div class="carousel__slide" data-slide-index="1" aria-hidden="true">
+          <img src="assets/carousel-nova-02.png?v=2" alt="Дирижабль NOVA-2">
+        </div>
+        <div class="carousel__slide" data-slide-index="2" aria-hidden="true">
+          <img src="assets/carousel-nova-08.png" alt="Дирижабль NOVA-8">
+        </div>
       </div>
-      <div class="btn-group" style="margin-top: var(--space-2xl);">
-        <a href="#partnership" class="btn btn--secondary">Обсудить региональное партнёрство</a>
-        <a href="#contact" class="btn btn--primary">Назначить встречу в Дубае</a>
+      <div class="carousel__intro">
+        <p class="carousel__name" id="carousel-name">NOVA-01</p>
+        <p class="carousel__status" id="carousel-status">Испытания</p>
+        <p class="carousel__desc" id="carousel-desc">14 полётов — проверка аэродинамики, системы управления и бортовой электроники.</p>
+      </div>
+      <div class="carousel__nav">
+        <button type="button" id="carousel-prev" aria-label="Предыдущий проект">‹</button>
+        <button type="button" id="carousel-next" aria-label="Следующий проект">›</button>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- 9. PARTNERSHIP MODELS -->
-  <section id="partnership" class="section">
+  <!-- Press -->
+  <section id="press" class="press">
     <div class="container">
-      <header class="section__header section__header--center">
-        <h2 class="section-block-title">Партнёрство</h2>
-        <p class="section__lead">
-          Структурированные форматы взаимодействия для заказчиков, региональных представителей, стратегических партнёров и инвесторов.
-        </p>
-      </header>
-      <div class="grid grid--2">
-        <article class="card partnership-card">
-          <h3 class="card__title">Заказчик</h3>
-          <p class="card__text">Для организаций, которым нужны дирижабельные платформы или миссионные внедрения. Прямое обсуждение требований, конфигурации и операционного планирования.</p>
-        </article>
-        <article class="card partnership-card">
-          <h3 class="card__title">Региональный представитель / дилер</h3>
-          <p class="card__text">Для квалифицированных партнёров, представляющих «Аэронову» на определённых территориях. Развитие рынка, привлечение клиентов и локальная операционная поддержка.</p>
-        </article>
-        <article class="card partnership-card">
-          <h3 class="card__title">Стратегический партнёр</h3>
-          <p class="card__text">Для компаний с дополняющими технологиями, инфраструктурой или доступом к рынку. Совместная разработка, совместное внедрение и проектирование интегрированных решений.</p>
-        </article>
-        <article class="card partnership-card">
-          <h3 class="card__title">Инвестор</h3>
-          <p class="card__text">Для инвесторов, интересующихся разработкой воздухоплавательной техники. Доступ к материалам компании, обзору программ и структурированному диалогу.</p>
-        </article>
+      <div class="press__header">
+        <h2 class="press__title">Пресс-центр</h2>
       </div>
-      <ul class="inline-list" style="margin-top: var(--space-xl); justify-content: center;">
-        <li class="inline-list__item">Запросить встречу</li>
-        <li class="inline-list__item">Стать партнёром</li>
-        <li class="inline-list__item">Обсудить представительство / дилерство</li>
-        <li class="inline-list__item">Запросить материалы для инвесторов</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 10. FINAL CTA -->
-  <section id="contact" class="section section--dark">
-    <div class="container final-cta">
-      <h2 class="final-cta__title">Обсудим, как воздухоплавательные платформы соответствуют вашим задачам</h2>
-      <p class="final-cta__lead">
-        Оцениваете ли вы миссионное применение, региональное представительство или инвестиционные возможности — мы открыты к структурированному диалогу.
-      </p>
-      <div class="btn-group final-cta__actions">
-        <a href="mailto:official@aeronova.team" class="btn btn--primary">Назначить встречу</a>
-        <a href="mailto:official@aeronova.team" class="btn btn--ghost">Запросить материалы</a>
-      </div>
-      <div class="contact-block">
-        <div class="contact-block__item">
-          <p class="contact-block__label">Email</p>
-          <p class="contact-block__value">official@aeronova.team</p>
-        </div>
-        <div class="contact-block__item">
-          <p class="contact-block__label">Сайт</p>
-          <p class="contact-block__value">aeronova.com</p>
-        </div>
-        <div class="contact-block__item">
-          <p class="contact-block__label">Telegram</p>
-          <p class="contact-block__value">@aeronova</p>
-        </div>
+      <div class="press__track" id="press-track">
+      <article class="press-card">
+        <div class="press-card__image"><img src="assets/news-featured.jpg" alt=""></div>
+        <p class="press-card__source">Источник</p>
+        <h3 class="press-card__title">Завершены наземные испытания беспилотного дирижабля NOVA-01</h3>
+        <p class="press-card__excerpt">Программа NOVA-01 перешла в следующую фазу после успешных наземных испытаний систем управления и бортовой электроники.</p>
+        <a href="#" class="btn">Читать</a>
+      </article>
+      <article class="press-card">
+        <div class="press-card__image"><img src="assets/carousel-center.jpg" alt=""></div>
+        <p class="press-card__source">Подкаст</p>
+        <h3 class="press-card__title">Аэронова: рост и стратегия развития</h3>
+        <p class="press-card__excerpt">Обсуждение перспектив воздухоплавательной техники, коммерческих сценариев и инженерных программ компании.</p>
+        <a href="#" class="btn">Слушать</a>
+      </article>
+      <article class="press-card">
+        <div class="press-card__image"><img src="assets/card-airfield.jpg" alt=""></div>
+        <p class="press-card__source">Подкаст</p>
+        <h3 class="press-card__title">Аэронова: будущее логистики и дирижаблей</h3>
+        <p class="press-card__excerpt">Как современные дирижабли могут дополнить наземную и авиационную логистику в удалённых регионах.</p>
+        <a href="#" class="btn">Слушать</a>
+      </article>
       </div>
     </div>
   </section>
 
+  <!-- Contact -->
+  <section id="contact" class="contact-cta section-light">
+    <div class="contact-cta__grid">
+      <div class="contact-cta__content">
+        <h2 class="contact-cta__title">Давайте работать вместе</h2>
+        <p class="contact-cta__text">Сотрудничаем с инженерными командами, промышленными партнёрами и заказчиками, которые ищут практичные решения на базе воздухоплавательной техники.</p>
+        <div class="btn-group" style="justify-content: flex-start;">
+          <a href="mailto:official@aeronova.team" class="btn">Связаться с нами</a>
+          <a href="#why" class="btn btn--ghost">Узнать больше</a>
+        </div>
+      </div>
+      <div class="contact-cta__visual" aria-hidden="true">
+        <img src="assets/hero.jpg" alt="">
+      </div>
+    </div>
+  </section>
+  </div>
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="site-footer__top">
-      <div class="site-footer__brand">
-        <a href="#hero" class="site-footer__logo"><span style="color: var(--color-gold);">A</span>ERONOVA</a>
-        <p class="site-footer__address">121121, Москва, БЦ «Хайт Тек Хаус»<br>ул. Большая Академическая, д. 5А</p>
+  <div class="site-footer__shell">
+    <a href="#hero" class="site-footer__logo">AERONOVA</a>
+    <div class="site-footer__grid">
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <a href="#why">О дирижаблях</a>
+          <a href="#advantages">Преимущества</a>
+        </div>
+        <div class="site-footer__col">
+          <a href="#projects">Применение</a>
+          <a href="#projects">Проекты</a>
+          <a href="#contact">Контакты</a>
+          <a href="#press">Пресс-центр</a>
+        </div>
+        <div class="site-footer__col">
+          <a href="mailto:official@aeronova.team">official@aeronova.team</a>
+          <div class="site-footer__social">
+            <a href="https://t.me/aeronova" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+              <img src="assets/icons/social-telegram.png?v=2" alt="">
+            </a>
+            <a href="https://vk.com/aeronova" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+              <img src="assets/icons/social-vk.png?v=2" alt="">
+            </a>
+            <a href="https://rutube.ru/channel/aeronova" target="_blank" rel="noopener noreferrer" aria-label="Rutube">
+              <img src="assets/icons/social-rutube.png?v=2" alt="">
+            </a>
+            <a href="https://dzen.ru/aeronova" target="_blank" rel="noopener noreferrer" aria-label="Дзен">
+              <img src="assets/icons/social-dzen.png?v=2" alt="">
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-title">О дирижаблях</p>
-        <a href="#why-airships" class="site-footer__col-link site-footer__col-link--muted">Технология</a>
-        <a href="#use-cases" class="site-footer__col-link">Применение</a>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-title">Проекты</p>
-        <a href="#products" class="site-footer__col-link site-footer__col-link--muted">Портфель</a>
-        <a href="#contact" class="site-footer__col-link site-footer__col-link--muted">Контакты</a>
-        <p class="site-footer__col-text">+7 (495) 775-60-53</p>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-text" style="margin-top: 2.75rem;">official@aeronova.team</p>
-      </div>
-      <a href="#hero" class="scroll-top" aria-label="Наверх">↑</a>
     </div>
-    <div class="site-footer__bottom">
-      <div class="site-footer__social">
-        <a href="#" class="site-footer__social-link" aria-label="Telegram">TG</a>
-        <a href="#" class="site-footer__social-link" aria-label="ВКонтакте">VK</a>
-      </div>
-      <div class="site-footer__legal">
-        <a href="#">Политика конфиденциальности</a>
-        <p style="margin: 0.5rem 0 0;">&copy; 2025, ООО «Аэронова». Все права защищены.</p>
-      </div>
-    </div>
+    <p class="site-footer__copy">© 2025, ООО «Аэронова».</p>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script>
   (function () {
-    var toggle = document.getElementById('nav-toggle');
-    var menu = document.getElementById('nav-menu');
-    var header = document.querySelector('.site-header');
+    function resetPageScroll() {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo(0, 0);
+    }
 
-    if (toggle && menu) {
-      toggle.addEventListener('click', function () {
-        var isOpen = menu.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', isOpen);
+    resetPageScroll();
+    document.addEventListener('DOMContentLoaded', resetPageScroll);
+    window.addEventListener('load', resetPageScroll);
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) resetPageScroll();
+    });
+
+    var hero = document.getElementById('hero');
+    var spacer = document.querySelector('.hero-spacer');
+
+    function updateHeroScroll() {
+      if (!hero || !spacer) return;
+      var end = spacer.offsetHeight * 0.9;
+      var progress = end > 0 ? Math.min(window.scrollY / end, 1) : 0;
+      hero.style.setProperty('--hero-progress', progress.toFixed(4));
+    }
+
+    updateHeroScroll();
+    window.addEventListener('scroll', updateHeroScroll, { passive: true });
+    window.addEventListener('resize', updateHeroScroll);
+
+    var heroMedia = document.querySelector('.hero__media');
+    var heroVideo = document.getElementById('hero-video');
+    var heroVideoEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var heroVideoStarted = false;
+
+    function markHeroVideoReady() {
+      if (heroMedia) heroMedia.classList.add('is-video-ready');
+    }
+
+    function tryPlayHeroVideo() {
+      if (!heroVideo || !heroVideoEnabled || heroVideoStarted) return;
+      if (heroVideo.readyState < 2) return;
+      heroVideoStarted = true;
+      var playPromise = heroVideo.play();
+      if (playPromise && playPromise.then) {
+        playPromise.then(markHeroVideoReady).catch(function () {
+          heroVideoStarted = false;
+        });
+      } else {
+        markHeroVideoReady();
+      }
+    }
+
+    if (heroVideo && heroVideoEnabled) {
+      heroVideo.loop = false;
+      heroVideo.addEventListener('loadeddata', tryPlayHeroVideo);
+      heroVideo.addEventListener('canplay', tryPlayHeroVideo);
+      heroVideo.addEventListener('playing', markHeroVideoReady);
+      heroVideo.addEventListener('error', function () {
+        heroVideoStarted = false;
+        if (heroMedia) heroMedia.classList.remove('is-video-ready');
+      });
+      tryPlayHeroVideo();
+    }
+
+    function syncSplitCardTextHeights() {
+      var texts = document.querySelectorAll('.split-card__text');
+      if (texts.length < 2) return;
+      texts.forEach(function (el) {
+        el.style.minHeight = '';
+      });
+      if (window.matchMedia('(max-width: 63.99rem)').matches) return;
+      var maxHeight = 0;
+      texts.forEach(function (el) {
+        maxHeight = Math.max(maxHeight, el.getBoundingClientRect().height);
+      });
+      var height = Math.ceil(maxHeight) + 'px';
+      texts.forEach(function (el) {
+        el.style.minHeight = height;
+      });
+    }
+
+    syncSplitCardTextHeights();
+    window.addEventListener('resize', syncSplitCardTextHeights);
+
+    function initScrollReveal() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var textSelector = [
+        'h2',
+        'h3',
+        '.eyebrow',
+        '.industry-card__desc',
+        '.split-card__title',
+        '.split-card__text',
+        '.carousel__intro p',
+        '.press-card__source',
+        '.press-card__title',
+        '.press-card__excerpt',
+        '.contact-cta__title',
+        '.contact-cta__text',
+        '.stat-item__label',
+        '.site-footer__copy'
+      ].join(', ');
+
+      var skipSelector = '#hero, .why-captions, .hero__stats, .stat-item__value';
+      var revealItems = [];
+
+      document.querySelectorAll('.page-scroll > section, .site-footer').forEach(function (root) {
+        root.querySelectorAll(textSelector).forEach(function (el) {
+          if (el.closest(skipSelector)) return;
+          if (el.closest('.industry-card')) return;
+          revealItems.push(el);
+        });
       });
 
+      if (!revealItems.length) return;
+
+      revealItems.forEach(function (el, index) {
+        el.classList.add('scroll-reveal-target');
+        el.dataset.revealOrder = String(index);
+        if (window.gsap) {
+          gsap.set(el, { opacity: 0, y: 32 });
+        } else {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(32px)';
+        }
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(function (el) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          revealObserver.unobserve(el);
+
+          var delay = (parseInt(el.dataset.revealOrder, 10) % 6) * 0.05;
+          if (window.gsap) {
+            gsap.to(el, {
+              opacity: 1,
+              y: 0,
+              duration: 0.95,
+              delay: delay,
+              ease: 'power3.out'
+            });
+          } else {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+
+      revealItems.forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    }
+
+    function initIndustryCardCascade() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var section = document.querySelector('.industries');
+      if (!section) return;
+
+      var cards = Array.prototype.slice.call(section.querySelectorAll('.industry-card'));
+      if (!cards.length) return;
+
+      cards.forEach(function (card) {
+        card.classList.add('scroll-reveal-target');
+        if (window.gsap) {
+          gsap.set(card, { opacity: 0, y: 56 });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(56px)';
+        }
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(function (card) {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+        });
+        return;
+      }
+
+      var revealed = false;
+      var cascadeObserver = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting || revealed) return;
+        revealed = true;
+        cascadeObserver.disconnect();
+
+        if (window.gsap) {
+          gsap.to(cards, {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            stagger: 0.2,
+            ease: 'power3.out'
+          });
+        } else {
+          cards.forEach(function (card, index) {
+            card.style.transition = 'opacity 0.95s ease, transform 0.95s ease';
+            card.style.transitionDelay = (index * 0.2) + 's';
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+          });
+        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      cascadeObserver.observe(section);
+    }
+
+    initScrollReveal();
+    initIndustryCardCascade();
+
+    var statsSection = document.querySelector('.stats-section');
+
+    function buildStatOdometer(valueEl, targetStr, cycles) {
+      var targetDigits = targetStr.split('');
+      var odometer = document.createElement('span');
+      odometer.className = 'stat-odometer';
+      odometer.setAttribute('aria-hidden', 'true');
+
+      targetDigits.forEach(function (digitChar) {
+        if (!/\d/.test(digitChar)) {
+          var staticChar = document.createElement('span');
+          staticChar.className = 'stat-odometer__char';
+          staticChar.textContent = digitChar;
+          odometer.appendChild(staticChar);
+          return;
+        }
+
+        var target = parseInt(digitChar, 10);
+        var digitWrap = document.createElement('span');
+        digitWrap.className = 'stat-odometer__digit';
+
+        var reel = document.createElement('span');
+        reel.className = 'stat-odometer__reel';
+
+        var endIndex = 0;
+        for (var cycle = 0; cycle < cycles; cycle++) {
+          for (var n = 0; n <= 9; n++) {
+            var span = document.createElement('span');
+            span.textContent = n;
+            reel.appendChild(span);
+            endIndex++;
+          }
+        }
+        for (var n = 0; n <= target; n++) {
+          var span = document.createElement('span');
+          span.textContent = n;
+          reel.appendChild(span);
+        }
+        endIndex = reel.children.length - 1;
+        reel.dataset.endIndex = String(endIndex);
+
+        digitWrap.appendChild(reel);
+        odometer.appendChild(digitWrap);
+      });
+
+      valueEl.textContent = '';
+      valueEl.appendChild(odometer);
+      return odometer;
+    }
+
+    function setStatOdometerEnd(reel) {
+      var endIndex = parseInt(reel.dataset.endIndex, 10) || 0;
+      if (window.gsap) {
+        gsap.set(reel, { y: (-endIndex) + 'em', rotateX: 0 });
+      } else {
+        reel.style.transform = 'translate3d(0, ' + (-endIndex) + 'em, 0)';
+      }
+    }
+
+    function animateStatOdometers(section) {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var statItems = section.querySelectorAll('.stat-item');
+
+      statItems.forEach(function (item, itemIndex) {
+        item.querySelectorAll('.stat-odometer__reel').forEach(function (reel, digitIndex) {
+          var endIndex = parseInt(reel.dataset.endIndex, 10) || 0;
+
+          if (reducedMotion || !window.gsap) {
+            setStatOdometerEnd(reel);
+            return;
+          }
+
+          gsap.set(reel, { y: '0em', rotateX: 0 });
+          gsap.to(reel, {
+            y: (-endIndex) + 'em',
+            duration: 2.4 + digitIndex * 0.15,
+            delay: itemIndex * 0.18,
+            ease: 'power3.out'
+          });
+        });
+      });
+    }
+
+    function initStatCounters(section, options) {
+      options = options || {};
+      if (!section) return;
+
+      var statValues = section.querySelectorAll('.stat-item__value[data-value]');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      statValues.forEach(function (valueEl) {
+        var valueStr = valueEl.getAttribute('data-value').replace(/&nbsp;/g, '\u00a0');
+        buildStatOdometer(valueEl, valueStr, reducedMotion ? 0 : 2);
+        if (reducedMotion) {
+          valueEl.querySelectorAll('.stat-odometer__reel').forEach(setStatOdometerEnd);
+        }
+      });
+
+      if (reducedMotion) return;
+
+      var statsAnimated = false;
+
+      function startStatsAnimation() {
+        if (statsAnimated) return;
+        statsAnimated = true;
+        requestAnimationFrame(function () {
+          animateStatOdometers(section);
+        });
+        if (statsObserver) statsObserver.disconnect();
+      }
+
+      var statsObserver = null;
+
+      function attachResizeHandler() {
+        window.addEventListener('resize', function () {
+          if (!statsAnimated) return;
+          section.querySelectorAll('.stat-odometer__reel').forEach(setStatOdometerEnd);
+        });
+      }
+
+      if (options.immediate) {
+        startStatsAnimation();
+        attachResizeHandler();
+      } else if ('IntersectionObserver' in window) {
+        statsObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) startStatsAnimation();
+          });
+        }, { threshold: [0, 0.08, 0.15, 0.25] });
+        statsObserver.observe(section);
+
+        attachResizeHandler();
+      } else {
+        startStatsAnimation();
+      }
+    }
+
+    if (statsSection) {
+      initStatCounters(statsSection);
+    }
+
+    if (hero) {
+      initStatCounters(hero, { immediate: true });
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncSplitCardTextHeights);
+    }
+
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
           menu.classList.remove('is-open');
@@ -1603,9 +1949,640 @@
       });
     }
 
-    if (header) {
+    var slides = [
+      {
+        name: 'NOVA-01',
+        status: 'Испытания',
+        desc: '14 полётов — проверка аэродинамики, системы управления и бортовой электроники.',
+        image: 'assets/carousel-nova-01.png'
+      },
+      {
+        name: 'NOVA-2',
+        status: 'Разработка',
+        desc: 'Новая конфигурация — больше грузоподъёмности и дальности для региональных задач.',
+        image: 'assets/carousel-nova-02.png?v=2'
+      },
+      {
+        name: 'NOVA-8',
+        status: 'Проектирование',
+        desc: 'Новая платформа для перевозок, мониторинга и логистики — с фокусом на безопасность и надёжность.',
+        image: 'assets/carousel-nova-08.png'
+      }
+    ];
+    var index = 0;
+    var carouselAnimating = false;
+    var carouselRoot = document.getElementById('projects-carousel');
+    var carouselStage = document.getElementById('carousel-stage');
+    var nameEl = document.getElementById('carousel-name');
+    var descEl = document.getElementById('carousel-desc');
+    var statusEl = document.getElementById('carousel-status');
+    var slideElements = Array.prototype.slice.call(document.querySelectorAll('.carousel__slide[data-slide-index]'));
+
+    function getCarouselPositions() {
+      var stage = carouselStage || document.querySelector('.carousel__stage');
+      var width = stage ? stage.offsetWidth : 960;
+      var compact = window.matchMedia('(max-width: 75rem)').matches;
+      var spread = compact ? 0 : Math.min(320, Math.max(200, width * 0.28));
+      return {
+        left: { x: -spread, y: 10, z: -150, scale: compact ? 0.92 : 0.8, opacity: compact ? 0 : 0.58, blur: compact ? 0 : 2, zIndex: 2 },
+        center: { x: 0, y: 0, z: 0, scale: compact ? 1.05 : 1.18, opacity: 1, blur: 0, zIndex: 4 },
+        right: { x: spread * 1.08, y: 26, z: -280, scale: compact ? 0.92 : 0.84, opacity: compact ? 0 : 0.4, blur: compact ? 0 : 18, zIndex: 1 }
+      };
+    }
+
+    function getRelativePosition(slideIdx) {
+      return (slideIdx - index + slides.length) % slides.length;
+    }
+
+    function stateForRelative(rel) {
+      var pos = getCarouselPositions();
+      if (rel === 0) return pos.center;
+      if (rel === 1) return pos.right;
+      return pos.left;
+    }
+
+    function getSlideMetrics(el) {
+      return {
+        x: gsap.getProperty(el, 'x'),
+        y: gsap.getProperty(el, 'y'),
+        z: gsap.getProperty(el, 'z') || 0,
+        scale: gsap.getProperty(el, 'scale'),
+        opacity: gsap.getProperty(el, 'opacity'),
+        blur: parseFloat(String(gsap.getProperty(el, 'filter') || 'blur(0px)').replace(/[^\d.]/g, '')) || 0,
+        zIndex: parseInt(gsap.getProperty(el, 'zIndex'), 10) || 1
+      };
+    }
+
+    function filterForBlur(blur) {
+      return blur ? 'blur(' + blur + 'px)' : 'blur(0px)';
+    }
+
+    function applySlideState(el, state) {
+      if (!el || !window.gsap) return;
+      gsap.set(el, {
+        xPercent: -50,
+        yPercent: -50,
+        transformPerspective: 1400,
+        x: state.x,
+        y: state.y,
+        z: state.z,
+        scale: state.scale,
+        opacity: state.opacity,
+        zIndex: state.zIndex,
+        filter: filterForBlur(state.blur)
+      });
+    }
+
+    function stackTween(el, from, to, duration, ease) {
+      return gsap.fromTo(el, {
+        xPercent: -50,
+        yPercent: -50,
+        transformPerspective: 1400,
+        x: from.x,
+        y: from.y,
+        z: from.z,
+        scale: from.scale,
+        opacity: from.opacity,
+        zIndex: from.zIndex,
+        filter: filterForBlur(from.blur)
+      }, {
+        x: to.x,
+        y: to.y,
+        z: to.z,
+        scale: to.scale,
+        opacity: to.opacity,
+        zIndex: to.zIndex,
+        filter: filterForBlur(to.blur),
+        duration: duration,
+        ease: ease || 'power3.inOut'
+      });
+    }
+
+    function updateCarouselMeta(animate) {
+      var slide = slides[index];
+      nameEl.textContent = slide.name;
+      if (descEl) descEl.textContent = slide.desc;
+      statusEl.textContent = slide.status;
+      if (!animate || !window.gsap) return;
+      gsap.fromTo([nameEl, statusEl, descEl], { y: 14 }, {
+        y: 0,
+        duration: 0.55,
+        stagger: 0.06,
+        ease: 'power2.out'
+      });
+    }
+
+    function transitionCarouselStack(direction) {
+      carouselAnimating = true;
+      if (carouselRoot) carouselRoot.classList.add('is-animating');
+      var pos = getCarouselPositions();
+      var compact = pos.left.opacity === 0;
+      var duration = compact ? 0.72 : 0.88;
+      var nextIndex = (index + direction + slides.length) % slides.length;
+      var n = slides.length;
+      var elCur = slideElements[index];
+      var elNext = slideElements[(index + 1) % n];
+      var elPrev = slideElements[(index - 1 + n) % n];
+      var safetyTimer = window.setTimeout(function () {
+        if (!carouselAnimating) return;
+        index = nextIndex;
+        finishCarouselTransition();
+      }, duration * 1000 + 400);
+      var tl = gsap.timeline({
+        onComplete: function () {
+          window.clearTimeout(safetyTimer);
+          index = nextIndex;
+          finishCarouselTransition();
+        }
+      });
+
+      if (compact) {
+        var elIncoming = slideElements[nextIndex];
+        tl.to(elCur, {
+          xPercent: -50,
+          yPercent: -50,
+          transformPerspective: 1400,
+          opacity: 0,
+          scale: 0.9,
+          filter: 'blur(10px)',
+          duration: duration * 0.42,
+          ease: 'power2.in'
+        }).add(function () {
+          layoutCarousel(true);
+        }).fromTo(elIncoming, {
+          xPercent: -50,
+          yPercent: -50,
+          transformPerspective: 1400,
+          opacity: 0,
+          scale: 0.9,
+          filter: 'blur(10px)'
+        }, {
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: duration * 0.58,
+          ease: 'power2.out'
+        });
+        return;
+      }
+
+      if (direction > 0) {
+        tl.add(stackTween(elCur, getSlideMetrics(elCur), pos.left, duration, 'power2.in'), 0);
+        tl.add(stackTween(elNext, getSlideMetrics(elNext), pos.center, duration, 'power2.out'), 0.04);
+        tl.add(stackTween(elPrev, getSlideMetrics(elPrev), pos.right, duration, 'power2.out'), 0.04);
+      } else {
+        tl.add(stackTween(elCur, getSlideMetrics(elCur), pos.right, duration, 'power2.in'), 0);
+        tl.add(stackTween(elPrev, getSlideMetrics(elPrev), pos.center, duration, 'power2.out'), 0.04);
+        tl.add(stackTween(elNext, getSlideMetrics(elNext), pos.left, duration, 'power2.out'), 0.04);
+      }
+    }
+
+    function finishCarouselTransition() {
+      layoutCarousel(true);
+      updateCarouselMeta(true);
+      carouselAnimating = false;
+      if (carouselRoot) carouselRoot.classList.remove('is-animating');
+    }
+
+    function layoutCarousel(instant) {
+      slideElements.forEach(function (el, slideIdx) {
+        var rel = getRelativePosition(slideIdx);
+        var state = stateForRelative(rel);
+        el.setAttribute('aria-hidden', rel === 0 ? 'false' : 'true');
+
+        if (!window.gsap) {
+          el.style.zIndex = String(state.zIndex);
+          el.style.opacity = String(state.opacity);
+          el.style.filter = state.blur ? 'blur(' + state.blur + 'px)' : 'none';
+          el.style.transform = 'translate(-50%, -50%) translate3d(' + state.x + 'px, ' + state.y + 'px, ' + state.z + 'px) scale(' + state.scale + ')';
+          return;
+        }
+
+        if (instant) {
+          applySlideState(el, state);
+        } else {
+          gsap.to(el, {
+            xPercent: -50,
+            yPercent: -50,
+            transformPerspective: 1400,
+            x: state.x,
+            y: state.y,
+            z: state.z,
+            scale: state.scale,
+            opacity: state.opacity,
+            zIndex: state.zIndex,
+            filter: filterForBlur(state.blur),
+            duration: 0.45,
+            ease: 'power2.out'
+          });
+        }
+      });
+    }
+
+    function transitionCarousel(direction) {
+      if (carouselAnimating) return;
+
+      if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        index = (index + direction + slides.length) % slides.length;
+        updateCarouselMeta(false);
+        layoutCarousel(true);
+        return;
+      }
+
+      transitionCarouselStack(direction);
+    }
+
+    layoutCarousel(true);
+    updateCarouselMeta(false);
+
+    var carouselPrev = document.getElementById('carousel-prev');
+    var carouselNext = document.getElementById('carousel-next');
+    if (carouselPrev) {
+      carouselPrev.addEventListener('click', function () {
+        transitionCarousel(-1);
+      });
+    }
+    if (carouselNext) {
+      carouselNext.addEventListener('click', function () {
+        transitionCarousel(1);
+      });
+    }
+
+    window.addEventListener('resize', function () {
+      if (!carouselAnimating) layoutCarousel(true);
+    });
+
+    var captionLines = [
+      'Дирижабли — воздушный транспорт,',
+      'которому не нужна полноценная ВПП.',
+      'Достаточно площадки',
+      'с причальной мачтой —',
+      'и маршрут открыт.',
+      'Они экономичны, экологичны',
+      'и доставляют грузы туда,',
+      'куда не долетают самолёты.',
+      'Именно поэтому дирижабли —',
+      'инструмент логистики и наблюдения',
+      'для бизнеса и государства.'
+    ];
+    var captionsTrack = document.getElementById('why-captions-track');
+    var captionsRoot = document.getElementById('why-captions');
+    var captionsViewport = document.getElementById('why-captions-viewport');
+    var whyVideo = document.getElementById('why-video');
+    var whyVideoEl = document.getElementById('why-video-el');
+    var whyPlay = document.getElementById('why-video-play');
+    var whyMute = document.getElementById('why-video-mute');
+    var captionTimer = null;
+    var captionRunning = false;
+    var captionManualScroll = false;
+    var captionScrollUnlockTimer = null;
+    var captionProgrammaticScroll = false;
+    var captionProgrammaticScrollTimer = null;
+    var speechUtterance = null;
+    var audioEnabled = false;
+    var hasVideoFile = false;
+    var whySectionInView = false;
+    var whyScrollIdleTimer = null;
+    var whyUserStopped = false;
+
+    if (whyVideoEl) {
+      function markVideoAvailable() {
+        hasVideoFile = whyVideoEl.readyState >= 1 && !whyVideoEl.error && whyVideoEl.networkState !== 3;
+      }
+
+      whyVideoEl.addEventListener('loadedmetadata', markVideoAvailable);
+      whyVideoEl.addEventListener('loadeddata', markVideoAvailable);
+      whyVideoEl.addEventListener('canplay', function () {
+        markVideoAvailable();
+        if (whySectionInView && captionRunning && !whyUserStopped && whyVideoEl.paused) {
+          startVideoPlayback();
+        }
+      });
+      whyVideoEl.addEventListener('playing', function () {
+        hasVideoFile = true;
+        if (whyVideo) {
+          whyVideo.classList.add('is-playing', 'has-video');
+          whyVideo.classList.remove('is-video-fallback');
+        }
+      });
+      whyVideoEl.addEventListener('error', function () {
+        hasVideoFile = false;
+        if (whyVideo) {
+          whyVideo.classList.remove('is-playing', 'has-video');
+          whyVideo.classList.add('is-video-fallback');
+        }
+      });
+      markVideoAvailable();
+    }
+
+    function stopSpeech() {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+      speechUtterance = null;
+    }
+
+    function startSpeech() {
+      if (!audioEnabled || !window.speechSynthesis) return;
+      stopSpeech();
+      speechUtterance = new SpeechSynthesisUtterance(captionLines.join(' '));
+      speechUtterance.lang = 'ru-RU';
+      speechUtterance.rate = 0.92;
+      var voices = window.speechSynthesis.getVoices();
+      var ruVoice = voices.find(function (v) { return v.lang && v.lang.indexOf('ru') === 0; });
+      if (ruVoice) speechUtterance.voice = ruVoice;
+      window.speechSynthesis.speak(speechUtterance);
+    }
+
+    function startVideoPlayback() {
+      if (!whyVideoEl) return false;
+      if (whyVideoEl.error || whyVideoEl.networkState === 3) {
+        hasVideoFile = false;
+        if (whyVideo) {
+          whyVideo.classList.remove('is-playing', 'has-video');
+          whyVideo.classList.add('is-video-fallback');
+        }
+        return false;
+      }
+      if (whyVideoEl.readyState < 2) {
+        whyVideoEl.load();
+        return false;
+      }
+      hasVideoFile = true;
+      whyVideoEl.muted = !audioEnabled;
+      var playPromise = whyVideoEl.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {
+          hasVideoFile = false;
+          if (whyVideo) {
+            whyVideo.classList.remove('is-playing', 'has-video');
+            whyVideo.classList.add('is-video-fallback');
+          }
+          if (audioEnabled) startSpeech();
+        });
+      }
+      return true;
+    }
+
+    function pauseVideoPlayback() {
+      if (whyVideoEl) {
+        whyVideoEl.pause();
+        whyVideoEl.currentTime = 0;
+      }
+    }
+
+    function updateMuteButton() {
+      if (!whyMute) return;
+      whyMute.textContent = audioEnabled ? '🔊' : '🔇';
+      whyMute.classList.toggle('is-muted', !audioEnabled);
+      whyMute.setAttribute('aria-label', audioEnabled ? 'Выключить звук' : 'Включить звук');
+      whyMute.setAttribute('aria-pressed', audioEnabled ? 'false' : 'true');
+      if (whyVideoEl) whyVideoEl.muted = !audioEnabled;
+    }
+
+    function updatePlayButton() {
+      if (!whyPlay) return;
+      var playing = captionRunning;
+      whyPlay.textContent = playing ? '■' : '▶';
+      whyPlay.classList.toggle('is-playing', playing);
+      whyPlay.setAttribute('aria-label', playing ? 'Остановить' : 'Смотреть видео');
+    }
+
+    function buildCaptions() {
+      if (!captionsTrack) return;
+      captionsTrack.innerHTML = '';
+      captionLines.forEach(function (line, lineIndex) {
+        var lineEl = document.createElement('p');
+        lineEl.className = 'why-captions__line';
+        lineEl.dataset.line = String(lineIndex);
+        line.split(/(\s+)/).forEach(function (part) {
+          if (!part.trim()) {
+            lineEl.appendChild(document.createTextNode(part));
+            return;
+          }
+          var word = document.createElement('span');
+          word.className = 'why-captions__word';
+          word.textContent = part;
+          lineEl.appendChild(word);
+        });
+        captionsTrack.appendChild(lineEl);
+      });
+    }
+
+    function markManualCaptionScroll() {
+      captionManualScroll = true;
+      clearTimeout(captionScrollUnlockTimer);
+      captionScrollUnlockTimer = setTimeout(function () {
+        captionManualScroll = false;
+      }, 2500);
+    }
+
+    function resetCaptions() {
+      if (!captionsTrack) return;
+      captionManualScroll = false;
+      captionProgrammaticScroll = false;
+      clearTimeout(captionScrollUnlockTimer);
+      clearTimeout(captionProgrammaticScrollTimer);
+      if (captionsViewport) captionsViewport.scrollTop = 0;
+      captionsTrack.querySelectorAll('.why-captions__line').forEach(function (line) {
+        line.classList.remove('is-active', 'is-done');
+      });
+      captionsTrack.querySelectorAll('.why-captions__word').forEach(function (word) {
+        word.classList.remove('is-spoken', 'is-current');
+      });
+    }
+
+    function scrollCaptionLine(lineEl) {
+      if (!captionsViewport || !lineEl || captionManualScroll) return;
+      var top = Math.max(0, lineEl.offsetTop - (captionsViewport.clientHeight * 0.32));
+      captionProgrammaticScroll = true;
+      clearTimeout(captionProgrammaticScrollTimer);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        captionsViewport.scrollTop = top;
+        captionProgrammaticScrollTimer = setTimeout(function () {
+          captionProgrammaticScroll = false;
+        }, 50);
+      } else if (captionsViewport.scrollTo) {
+        captionsViewport.scrollTo({ top: top, behavior: 'smooth' });
+        captionProgrammaticScrollTimer = setTimeout(function () {
+          captionProgrammaticScroll = false;
+        }, 550);
+      } else {
+        captionsViewport.scrollTop = top;
+        captionProgrammaticScrollTimer = setTimeout(function () {
+          captionProgrammaticScroll = false;
+        }, 50);
+      }
+    }
+
+    function stopCaptions() {
+      captionRunning = false;
+      captionManualScroll = false;
+      captionProgrammaticScroll = false;
+      clearTimeout(captionScrollUnlockTimer);
+      clearTimeout(captionProgrammaticScrollTimer);
+      if (captionTimer) {
+        clearTimeout(captionTimer);
+        captionTimer = null;
+      }
+      stopSpeech();
+      pauseVideoPlayback();
+      if (whyVideo) whyVideo.classList.remove('is-playing', 'has-video');
+      updatePlayButton();
+    }
+
+    function tryStartWhyPlayback() {
+      if (!whySectionInView || captionRunning || whyUserStopped) return;
+      if (whyVideoEl && whyVideoEl.readyState < 2) {
+        whyVideoEl.load();
+      }
+      startPlayback();
+    }
+
+    function scheduleWhyPlayback() {
+      clearTimeout(whyScrollIdleTimer);
+      whyScrollIdleTimer = setTimeout(tryStartWhyPlayback, 150);
+    }
+
+    function startPlayback() {
+      whyUserStopped = false;
+      var videoStarted = startVideoPlayback();
+      if (!videoStarted && whyVideo) {
+        whyVideo.classList.remove('is-playing', 'has-video');
+        if (!hasVideoFile) whyVideo.classList.add('is-video-fallback');
+      }
+      if (!videoStarted && audioEnabled) {
+        startSpeech();
+      }
+      runCaptions();
+      updatePlayButton();
+    }
+
+    function runCaptions() {
+      if (!captionsTrack || captionRunning) return;
+      captionRunning = true;
+      resetCaptions();
+
+      var lines = Array.prototype.slice.call(captionsTrack.querySelectorAll('.why-captions__line'));
+      var lineIndex = 0;
+      var wordIndex = 0;
+
+      function step() {
+        if (!captionRunning) return;
+
+        if (lineIndex >= lines.length) {
+          captionTimer = setTimeout(function () {
+            stopCaptions();
+            resetCaptions();
+          }, 600);
+          return;
+        }
+
+        var line = lines[lineIndex];
+        var words = line.querySelectorAll('.why-captions__word');
+
+        lines.forEach(function (item, index) {
+          item.classList.toggle('is-active', index === lineIndex);
+          item.classList.toggle('is-done', index < lineIndex);
+        });
+
+        scrollCaptionLine(line);
+
+        words.forEach(function (word, index) {
+          word.classList.toggle('is-spoken', index < wordIndex);
+          word.classList.toggle('is-current', index === wordIndex);
+        });
+
+        wordIndex += 1;
+        if (wordIndex > words.length) {
+          words.forEach(function (word) {
+            word.classList.remove('is-current');
+            word.classList.add('is-spoken');
+          });
+          lineIndex += 1;
+          wordIndex = 0;
+          captionTimer = setTimeout(step, 420);
+          return;
+        }
+
+        captionTimer = setTimeout(step, 340);
+      }
+
+      step();
+    }
+
+    buildCaptions();
+
+    if (captionsViewport) {
+      captionsViewport.addEventListener('wheel', markManualCaptionScroll, { passive: true });
+      captionsViewport.addEventListener('touchstart', markManualCaptionScroll, { passive: true });
+      captionsViewport.addEventListener('keydown', function (e) {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].indexOf(e.key) !== -1) {
+          markManualCaptionScroll();
+        }
+      });
+      captionsViewport.addEventListener('scroll', function () {
+        if (captionProgrammaticScroll) return;
+        if (captionRunning) markManualCaptionScroll();
+      }, { passive: true });
+    }
+
+    if (whyPlay) {
+      updatePlayButton();
+      whyPlay.addEventListener('click', function () {
+        if (captionRunning) {
+          whyUserStopped = true;
+          stopCaptions();
+          resetCaptions();
+          return;
+        }
+        startPlayback();
+      });
+    }
+
+    if (whyMute) {
+      whyMute.addEventListener('click', function () {
+        audioEnabled = !audioEnabled;
+        updateMuteButton();
+        if (!audioEnabled) {
+          stopSpeech();
+        } else if (captionRunning) {
+          if (!whyVideoEl || whyVideoEl.paused) startSpeech();
+        }
+      });
+      updateMuteButton();
+    }
+
+    if (window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = function () {
+        if (captionRunning && audioEnabled && (!whyVideoEl || whyVideoEl.paused)) {
+          startSpeech();
+        }
+      };
+    }
+
+    var whySection = document.getElementById('why');
+
+    if (whySection && 'IntersectionObserver' in window) {
+      var whyObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.35) {
+            whySectionInView = false;
+            clearTimeout(whyScrollIdleTimer);
+            whyUserStopped = false;
+            stopCaptions();
+            resetCaptions();
+            if (whyVideo) whyVideo.classList.remove('is-video-fallback');
+            return;
+          }
+          whySectionInView = true;
+          scheduleWhyPlayback();
+        });
+      }, { threshold: [0, 0.2, 0.35, 0.5, 0.65] });
+      whyObserver.observe(whySection);
+
       window.addEventListener('scroll', function () {
-        header.classList.toggle('is-scrolled', window.scrollY > 80);
+        if (whySectionInView) scheduleWhyPlayback();
       }, { passive: true });
     }
   })();
